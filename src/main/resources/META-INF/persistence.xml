@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+      http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="primary" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<!--<provider>org.eclipse.persistence.</provider>-->
+		<!-- <class>org.hikarikyou.demo.org.hikarikyou.demo.spring.pojo.entity.Task</class> -->
+		<mapping-file>META-INF/orm/common-orm.xml</mapping-file>
+		<!--<mapping-file>META-INF/orm/task-orm.xml</mapping-file>-->
+<!--		<mapping-file>META-INF/orm/counter-orm.xml</mapping-file>-->
+
+		<mapping-file>META-INF/orm/user-orm.xml</mapping-file>
+		<properties>
+			<property name="showSql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
+<!--			<property name="hibernate.show_sql" value="true" />-->
+			<!--<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />-->
+		</properties>
+	</persistence-unit>
+
+</persistence>

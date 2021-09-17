@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+}
+
+group 'org.harryng.kotlin.demo'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    implementation "javax.persistence:javax.persistence-api:2.2"
+    implementation "jakarta.persistence:jakarta.persistence-api:3.0.0"
+    implementation "org.slf4j:slf4j-log4j12:${slf4jVer}"
+    implementation "com.h2database:h2:${h2Ver}"
+    implementation "org.apache.commons:commons-dbcp2:${apacheCommonVer}"
+    implementation "junit:junit:${junitVer}"
+
+    implementation "org.aspectj:aspectjrt:${aspectjVersion}"
+    implementation "org.aspectj:aspectjweaver:${aspectjVersion}"
+
+    implementation "org.springframework:spring-context:${springVer}"
+    implementation "org.springframework:spring-core:${springVer}"
+    implementation "org.springframework:spring-orm:${springVer}"
+    implementation "org.springframework:spring-tx:${springVer}"
+    implementation "org.springframework:spring-aspects:${springVer}"
+    implementation "org.springframework.data:spring-data-commons:${springDataVer}"
+    implementation "org.springframework.data:spring-data-jpa:${springDataVer}"
+
+//    implementation "org.eclipse.persistence:eclipselink:${eclipselinkVer}"
+//    implementation "org.eclipse.persistence:org.eclipse.persistence.jpa:${eclipselinkVer}"
+
+    implementation "org.hibernate:hibernate-core:${hibernateVer}"
+
+}
