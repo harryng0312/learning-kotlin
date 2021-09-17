@@ -24,7 +24,7 @@ class TestUserService {
     }
 
     @Test
-    fun testUserService() {
+    fun testAddUserService() {
         logger.info("=====:${extras.javaClass}")
         var user: UserImpl = UserImpl(
             id = 1, username = "username1", passwd = "passwd1", passwdEncryptedMethod = "plain",
@@ -34,5 +34,19 @@ class TestUserService {
         logger.info("userService.persistence:${userService.persistence.hashCode()}")
         userService.add(sessionHolder, user, extras)
         logger.info("sussess")
+    }
+
+    @Test
+    fun testGetUserByIdService(){
+        logger.info("=====:${extras.javaClass}")
+        var id: Long = 1L
+        var userService = SpringUtil.applicationContext.getBean("userService") as UserService
+        try {
+            var user = userService.getById(sessionHolder, id, extras)
+            logger.info("user: ${user.username}")
+        }catch (e: NullPointerException){
+            logger.error("", e)
+        }
+
     }
 }
