@@ -26,21 +26,23 @@
     <!--        <constructor-arg name="dataSource" ref="dataSource"/>-->
     <!--    </bean>-->
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          destroy-method="destroy">
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
         <property name="persistenceUnitName" value="primary"/>
         <property name="dataSource" ref="dataSource"/>
-<!--        <property name="packagesToScan">-->
-<!--            <list>-->
-<!--                <value>org.harryng.kotlin.demo.**.persistence</value>-->
-<!--            </list>-->
-<!--        </property>-->
-        <property name="jpaProperties">
-            <props>
-                <prop key="showSql">true</prop>
-                <prop key="databasePlatform">org.eclipse.persistence.platform.database.H2Platform</prop>
-            </props>
-        </property>
+        <!--        <property name="packagesToScan">-->
+        <!--            <list>-->
+        <!--                <value>org.harryng.kotlin.demo.**.persistence</value>-->
+        <!--            </list>-->
+        <!--        </property>-->
+
+        <!--        <property name="jpaProperties">-->
+        <!--            <props>-->
+        <!--&lt;!&ndash;                <prop key="showSql">true</prop>&ndash;&gt;-->
+        <!--                <prop key="databasePlatform">org.eclipse.persistence.platform.database.H2Platform</prop>-->
+        <!--            </props>-->
+        <!--        </property>-->
         <property name="jpaVendorAdapter">
             <bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <!--<property name="databasePlatform" value="org.eclipse.persistence.platform.database.OraclePlatform" />-->
@@ -49,6 +51,7 @@
         </property>
         <property name="jpaPropertyMap">
             <map>
+                <entry key="showSql" value="true"/>
                 <entry key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             </map>
         </property>
@@ -64,21 +67,21 @@
         </property>
     </bean>
 
-<!--    <bean id="transactionManagerOld" class="org.springframework.data.transaction.ChainedTransactionManager">-->
-<!--        <constructor-arg name="transactionManagers">-->
-<!--            <list>-->
-<!--                &lt;!&ndash;                <ref bean="dsTransactionManager"/>&ndash;&gt;-->
-<!--                <ref bean="jpaTransactionManager"/>-->
-<!--            </list>-->
-<!--        </constructor-arg>-->
-<!--    </bean>-->
+    <!--    <bean id="transactionManagerOld" class="org.springframework.data.transaction.ChainedTransactionManager">-->
+    <!--        <constructor-arg name="transactionManagers">-->
+    <!--            <list>-->
+    <!--                &lt;!&ndash;                <ref bean="dsTransactionManager"/>&ndash;&gt;-->
+    <!--                <ref bean="jpaTransactionManager"/>-->
+    <!--            </list>-->
+    <!--        </constructor-arg>-->
+    <!--    </bean>-->
 
-<!--    <bean id="transactionManager" class="org.springframework.data.transaction.ChainedTransactionManager">-->
-<!--        <constructor-arg name="transactionManagers">-->
-<!--            <list>-->
-<!--                <ref bean="jpaTransactionManager"/>-->
-<!--            </list>-->
-<!--        </constructor-arg>-->
-<!--    </bean>-->
+    <!--    <bean id="transactionManager" class="org.springframework.data.transaction.ChainedTransactionManager">-->
+    <!--        <constructor-arg name="transactionManagers">-->
+    <!--            <list>-->
+    <!--                <ref bean="jpaTransactionManager"/>-->
+    <!--            </list>-->
+    <!--        </constructor-arg>-->
+    <!--    </bean>-->
 
 </beans>

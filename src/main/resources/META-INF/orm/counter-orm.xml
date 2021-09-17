@@ -2,18 +2,19 @@
 <entity-mappings version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
-<!--	<mapped-superclass class="org.hikarikyou.demo.spring.kernel.counter.pojo.model.CounterModel">-->
-<!--		<attributes>-->
-<!--			<basic name="value">-->
-<!--				<column name="value_" />-->
-<!--			</basic>-->
-<!--		</attributes>-->
-<!--	</mapped-superclass>-->
+	<mapped-superclass class="org.harryng.kotlin.demo.entity.CounterModel">
+		<attributes>
+			<basic name="value">
+				<column name="value_" />
+			</basic>
+			<transient name="maxValue"/>
+		</attributes>
+	</mapped-superclass>
 
-<!--	<entity class="org.hikarikyou.demo.spring.kernel.counter.pojo.entity.CounterImpl">-->
-<!--		<table name="counter" />-->
+	<entity class="org.harryng.kotlin.demo.entity.CounterImpl">
+		<table name="counter" />
 <!--		<attributes>-->
 <!--			<id name="id"/>-->
 <!--		</attributes>-->
-<!--	</entity>-->
+	</entity>
 </entity-mappings>

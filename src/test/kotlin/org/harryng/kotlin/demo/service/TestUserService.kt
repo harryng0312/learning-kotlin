@@ -24,8 +24,22 @@ class TestUserService {
     }
 
     @Test
-    fun testAddUserService() {
-        logger.info("=====:${extras.javaClass}")
+    fun testGetUserById(){
+        logger.info("=====")
+        var id: Long = 2L
+        var userService = SpringUtil.applicationContext.getBean("userService") as UserService
+        try {
+            var user = userService.getById(sessionHolder, id, extras)
+            logger.info("user: ${user.username}")
+        }catch (e: NullPointerException){
+            logger.error("", e)
+        }
+
+    }
+
+    @Test
+    fun testAddUser() {
+        logger.info("=====")
         var user: UserImpl = UserImpl(
             id = 1, username = "username1", passwd = "passwd1", passwdEncryptedMethod = "plain",
             screenName = "screenname1", dob = Date(),
@@ -37,16 +51,7 @@ class TestUserService {
     }
 
     @Test
-    fun testGetUserByIdService(){
-        logger.info("=====:${extras.javaClass}")
-        var id: Long = 1L
-        var userService = SpringUtil.applicationContext.getBean("userService") as UserService
-        try {
-            var user = userService.getById(sessionHolder, id, extras)
-            logger.info("user: ${user.username}")
-        }catch (e: NullPointerException){
-            logger.error("", e)
-        }
+    fun testAddUserBatch(){
 
     }
 }

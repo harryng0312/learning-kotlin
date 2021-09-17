@@ -1,12 +1,9 @@
 package org.harryng.kotlin.demo.persistence
 
 import org.harryng.kotlin.demo.entity.Entity
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
 import java.io.Serializable
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
-import javax.persistence.PersistenceUnit
 import javax.persistence.Query
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaDelete
@@ -22,7 +19,7 @@ abstract class AbstractPersistence<T : Entity<Id>, Id : Serializable>(override v
     override val entityManager: EntityManager
         get() = defaultEntityManager
 
-    override fun selectById(id: Id): T {
+    override fun selectById(id: Id): T? {
         return entityManager.find(entityClass, id)
     }
 
@@ -38,11 +35,11 @@ abstract class AbstractPersistence<T : Entity<Id>, Id : Serializable>(override v
 
     override fun delete(id: Id): Int {
         val cb: CriteriaBuilder = entityManager.criteriaBuilder
-        val criteriaDelete: CriteriaDelete<T> = cb.createCriteriaDelete(entityClass);
-        val root: Root<T> = criteriaDelete.from(entityClass);
-        criteriaDelete.where(cb.equal(root.get<Expression<*>>("id"), id));
-        val query: Query = entityManager.createQuery(criteriaDelete);
-        val rs: Int = query.executeUpdate();
+        val criteriaDelete: CriteriaDelete<T> = cb.createCriteriaDelete(entityClass)
+        val root: Root<T> = criteriaDelete.from(entityClass)
+        criteriaDelete.where(cb.equal(root.get<Expression<*>>("id"), id))
+        val query: Query = entityManager.createQuery(criteriaDelete)
+        val rs: Int = query.executeUpdate()
         return rs
     }
 }

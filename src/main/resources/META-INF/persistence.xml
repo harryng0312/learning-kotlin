@@ -6,7 +6,7 @@
 	version="2.1">
 
 	<persistence-unit name="primary" transaction-type="RESOURCE_LOCAL">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+<!--		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
 		<!--<provider>org.eclipse.persistence.</provider>-->
 		<!-- <class>org.hikarikyou.demo.org.hikarikyou.demo.spring.pojo.entity.Task</class> -->
 		<mapping-file>META-INF/orm/common-orm.xml</mapping-file>
@@ -14,13 +14,13 @@
 <!--		<mapping-file>META-INF/orm/counter-orm.xml</mapping-file>-->
 
 		<mapping-file>META-INF/orm/user-orm.xml</mapping-file>
-		<properties>
-			<property name="showSql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+<!--		<properties>-->
+<!--			<property name="showSql" value="true" />-->
+<!--			<property name="hibernate.hbm2ddl.auto" value="update"/>-->
 			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
 <!--			<property name="hibernate.show_sql" value="true" />-->
 			<!--<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />-->
-		</properties>
+<!--		</properties>-->
 	</persistence-unit>
 
 </persistence>
