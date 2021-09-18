@@ -43,7 +43,7 @@ class TestUserService {
         var userService = SpringUtil.applicationContext.getBean("userService") as UserService
         try {
             var user = userService.getByUsername(sessionHolder, username, extras)
-            logger.info("user: ${user.id}")
+            logger.info("user: ${user?.id}")
         }catch (e: NullPointerException){
             logger.error("", e)
         }
@@ -65,11 +65,11 @@ class TestUserService {
     @Test
     fun testUpdateUser(){
         logger.info("=====")
-        var user: UserImpl = UserImpl(
+        val user: UserImpl = UserImpl(
             id = 1, username = "username1", passwd = "passwd1", passwdEncryptedMethod = "plain",
             screenName = "screenname1-updated", dob = Date(),
         )
-        var userService = SpringUtil.applicationContext.getBean("userService") as UserService
+        val userService = SpringUtil.applicationContext.getBean("userService") as UserService
         userService.edit(sessionHolder, user, extras)
 //        var userAfter = userService.getById(sessionHolder, 1, extras)
         logger.info("After:${user?.screenName}")
