@@ -4,6 +4,7 @@ import org.harryng.kotlin.demo.entity.CounterImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.cache.Cache
+import org.springframework.cache.CacheManager
 import org.springframework.cache.concurrent.ConcurrentMapCache
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
@@ -20,8 +21,10 @@ open class CounterPersistenceImpl : CounterPersistence {
     private lateinit var defaultEntityManager: EntityManager
 
     @Autowired
-    @Qualifier("counter")
-    private lateinit var cache: ConcurrentMapCache
+    @Qualifier("cacheManager")
+    private lateinit var cacheManager: CacheManager
+    private val cache get() = cacheManager.getCache("counter")
+
 
     override val entityManager: EntityManager
         get() = defaultEntityManager
@@ -46,8 +49,8 @@ open class CounterPersistenceImpl : CounterPersistence {
             // if not exits in db - create into db and cache
             if (counter == null) {
                 counter = insert(id)
-                cache.put(id, counter)
             }
+            cache.put(id, counter)
             cacheValue = cache[id]
             counter = cacheValue?.get() as CounterImpl
         } else {
@@ -58,7 +61,13 @@ open class CounterPersistenceImpl : CounterPersistence {
 
     override fun insert(id: String, initValue: Long): CounterImpl {
         val counter = CounterImpl(id, initValue)
+        val currVal = counter.value
+        counter.value = counter.maxValue
         entityManager.persist(counter)
+        entityManager.flush()
+        entityManager.detach(counter)
+        counter.value = currVal
+        counter.maxValue = counter.value + CounterPersistence.DEFAULT_CACHE_STEP
         return counter
     }
 
@@ -66,8 +75,12 @@ open class CounterPersistenceImpl : CounterPersistence {
         lateinit var counter: CounterImpl
         synchronized(lock) {
             counter = currentCounter(id)
+            if(counter.value + step >= counter.maxValue){
+                counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
+                updateCounter(id, counter.maxValue)
+            }
             counter.value += step
-            updateCounter(id, counter.value)
+            cache.put(id, counter)
         }
         return counter.value
     }

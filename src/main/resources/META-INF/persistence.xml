@@ -11,8 +11,7 @@
 		<!-- <class>org.hikarikyou.demo.org.hikarikyou.demo.spring.pojo.entity.Task</class> -->
 		<mapping-file>META-INF/orm/common-orm.xml</mapping-file>
 		<!--<mapping-file>META-INF/orm/task-orm.xml</mapping-file>-->
-<!--		<mapping-file>META-INF/orm/counter-orm.xml</mapping-file>-->
-
+		<mapping-file>META-INF/orm/counter-orm.xml</mapping-file>
 		<mapping-file>META-INF/orm/user-orm.xml</mapping-file>
 <!--		<properties>-->
 <!--			<property name="showSql" value="true" />-->

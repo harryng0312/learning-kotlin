@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="counterPersistence" class="org.harryng.kotlin.demo.persistence.CounterPersistenceImpl"/>
+    <bean id="counterService" class="org.harryng.kotlin.demo.service.CounterServiceImpl"/>
+
+    <aop:config>
+        <aop:pointcut id="counterPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterPersistenceImpl)"/>
+        <aop:advisor pointcut-ref="counterPersistenceOperation" advice-ref="requiredNewTxAdvicePersistence"  order="0"/>
+    </aop:config>
+</beans>
