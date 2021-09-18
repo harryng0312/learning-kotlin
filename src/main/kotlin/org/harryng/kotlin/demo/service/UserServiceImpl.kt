@@ -16,5 +16,9 @@ class UserServiceImpl :
 
     }
 
+    override fun getByUsername(sessionHolder: SessionHolder, username: String, extras: Map<String, Any>) : UserImpl {
+        return persistence.selectByUsername(username)
+    }
+
 
 }

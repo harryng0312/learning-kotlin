@@ -7,7 +7,7 @@ import java.io.Serializable
 abstract class AbstractService<T : Any, Id : Serializable> : BaseService<T, Id> {
     abstract override val persistence: BasePersistence<T, Id>
 
-    override fun getById(sessionHolder: SessionHolder, id: Id, extras: Map<String, Any>): T {
+    override fun getById(sessionHolder: SessionHolder, id: Id, extras: Map<String, Any>): T? {
         val obj = persistence.selectById(id)
         return obj
     }

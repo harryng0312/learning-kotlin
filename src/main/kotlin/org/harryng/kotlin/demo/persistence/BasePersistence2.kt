@@ -1,10 +1,12 @@
 package org.harryng.kotlin.demo.persistence
 
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.NoRepositoryBean
 import java.io.Serializable
+import javax.persistence.EntityManager
 
-interface BasePersistence<T : Any, Id : Serializable> {//: JpaRepository<T, Id>{
-//    val entityManager: EntityManager
-    val entityClass: Class<T>
+//@NoRepositoryBean
+interface BasePersistence2<T : Any, Id : Serializable> : JpaRepository<T, Id> {
 
     @Throws(RuntimeException::class)
     fun selectById(id: Id): T?

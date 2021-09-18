@@ -30,11 +30,23 @@ class TestUserService {
         var userService = SpringUtil.applicationContext.getBean("userService") as UserService
         try {
             var user = userService.getById(sessionHolder, id, extras)
-            logger.info("user: ${user.username}")
+            logger.info("user: ${user?.username}")
         }catch (e: NullPointerException){
             logger.error("", e)
         }
+    }
 
+    @Test
+    fun testGetUserByUsername(){
+        logger.info("=====")
+        var username = "username1"
+        var userService = SpringUtil.applicationContext.getBean("userService") as UserService
+        try {
+            var user = userService.getByUsername(sessionHolder, username, extras)
+            logger.info("user: ${user.id}")
+        }catch (e: NullPointerException){
+            logger.error("", e)
+        }
     }
 
     @Test
@@ -48,6 +60,19 @@ class TestUserService {
         logger.info("userService.persistence:${userService.persistence.hashCode()}")
         userService.add(sessionHolder, user, extras)
         logger.info("sussess")
+    }
+
+    @Test
+    fun testUpdateUser(){
+        logger.info("=====")
+        var user: UserImpl = UserImpl(
+            id = 1, username = "username1", passwd = "passwd1", passwdEncryptedMethod = "plain",
+            screenName = "screenname1-updated", dob = Date(),
+        )
+        var userService = SpringUtil.applicationContext.getBean("userService") as UserService
+        userService.edit(sessionHolder, user, extras)
+//        var userAfter = userService.getById(sessionHolder, 1, extras)
+        logger.info("After:${user?.screenName}")
     }
 
     @Test

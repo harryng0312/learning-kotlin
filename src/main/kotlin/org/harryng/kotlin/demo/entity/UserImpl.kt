@@ -2,8 +2,11 @@ package org.harryng.kotlin.demo.entity
 
 import org.harryng.kotlin.demo.util.ValueUtil
 import java.util.*
+import javax.persistence.Id
+import javax.persistence.Entity
 
-data class UserImpl(override var id: Long,
+@Entity
+data class UserImpl(@Id override var id: Long,
                     override var username: String,
                     override var passwd: String,
                     override var passwdEncryptedMethod: String,
