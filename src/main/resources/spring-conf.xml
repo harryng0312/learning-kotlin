@@ -7,6 +7,7 @@
     <!-- be sure to include the JavaConfig bean post-processor -->
     <context:annotation-config/>
     <context:component-scan base-package="org.harryng.kotlin.demo.persistence, org.harryng.kotlin.demo.service" />
+    
     <import resource="classpath:spring/db.xml"/>
     <import resource="classpath:spring/aop.xml"/>
     <import resource="classpath:spring/common.xml"/>

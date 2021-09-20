@@ -40,7 +40,7 @@ open class CounterPersistenceImpl : CounterPersistence {
 
     @Throws(NullPointerException::class)
     protected fun currentCounter(id: String): CounterImpl {
-        var counter: CounterImpl?
+        var counter: CounterImpl
         var cacheValue: Cache.ValueWrapper? = cache[id]
         // check cache
         if (cacheValue == null) {
@@ -56,7 +56,7 @@ open class CounterPersistenceImpl : CounterPersistence {
         } else {
             counter = cacheValue.get() as CounterImpl
         }
-        return counter!!
+        return counter
     }
 
     override fun insert(id: String, initValue: Long): CounterImpl {

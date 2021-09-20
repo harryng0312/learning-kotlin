@@ -1,5 +1,8 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id "org.jetbrains.kotlin.jvm" version "1.5.10"
+    id "java"
+    // id "application"
+    // id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group 'org.harryng.kotlin.demo'
@@ -8,15 +11,26 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+compileTestJava {
+ 	sourceCompatibility = 11
+	targetCompatibility = 11
+}
 
+compileJava {
+	sourceCompatibility = 11
+	targetCompatibility = 11
+}
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    // implementation "com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:6.1.0", ext:"pom"
 
     implementation "javax.persistence:javax.persistence-api:2.2"
     implementation "jakarta.persistence:jakarta.persistence-api:3.0.0"
+    implementation "org.slf4j:slf4j-api:${slf4jVer}"
     implementation "org.slf4j:slf4j-log4j12:${slf4jVer}"
     implementation "com.h2database:h2:${h2Ver}"
     implementation "org.apache.commons:commons-dbcp2:${apacheCommonVer}"
+    implementation "org.apache.commons:commons-lang3:3.12.0"
     implementation "junit:junit:${junitVer}"
 
     implementation "org.aspectj:aspectjrt:${aspectjVersion}"
@@ -36,3 +50,58 @@ dependencies {
     implementation "org.hibernate:hibernate-core:${hibernateVer}"
 
 }
+
+String mainClassName = "org.harryng.kotlin.demo.TestMain2Kt"
+
+// task fatJar(type: Jar) {
+// //    doFirst {
+//        manifest {
+//            if (!configurations.compileClasspath.isEmpty()) {
+//                attributes["Implementation-Title"] = "Gradle Jar File Example"
+//                attributes["Implementation-Version"] = archiveVersion
+//                attributes["Main-Class"] = mainClassName
+//                attributes["Class-Path"] = configurations.compileClasspath.collect { it.getName() }.join(' ')
+//            }
+//        }
+// //    }
+// //    archivesBaseName = project.name + "-all"
+//    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+// }
+
+// task customFatJar(type: Jar) {
+//    manifest {
+//        attributes "Main-Class": mainClassName
+//    }
+// //    archivesBaseName = archivesBaseName
+//    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+// //    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+// }
+
+jar {
+    doFirst {
+//        archivesBaseName = project.name + "-all"
+    //    from configurations.runtimeClasspath
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+        manifest {
+            if (!configurations.compileClasspath.isEmpty()) {
+                attributes["Implementation-Title"] = "Gradle Jar File Example"
+                attributes["Implementation-Version"] = archiveVersion
+                attributes["Main-Class"] = mainClassName
+                attributes["Class-Path"] = configurations.compileClasspath.files.collect { it.getName() }.join(' ')
+            }
+        }
+    }
+}
+
+// jar {
+//     manifest {
+//         attributes 'Main-Class': mainClassName
+//     }
+//     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//     from {
+//         configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+//     }
+// }
