@@ -3,11 +3,13 @@ package org.harryng.kotlin.demo.service
 import org.harryng.kotlin.demo.entity.CounterImpl
 import org.harryng.kotlin.demo.persistence.CounterPersistence
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import kotlin.jvm.Throws
 
 class CounterServiceImpl : CounterService {
 
     @Autowired
+    @Qualifier("counterSyncPersistence")
     lateinit var persistence: CounterPersistence
 
     @Throws(RuntimeException::class)

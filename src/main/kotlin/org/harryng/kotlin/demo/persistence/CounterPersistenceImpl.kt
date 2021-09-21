@@ -12,10 +12,10 @@ import javax.persistence.criteria.Expression
 
 open class CounterPersistenceImpl : CounterPersistence {
 
-    //    companion object {
-
-    private val lock = Object()
-//    }
+    companion object {
+        @JvmStatic
+        protected val lock = Object()
+    }
 
     @PersistenceContext(name = "primary")
     private lateinit var defaultEntityManager: EntityManager
@@ -23,13 +23,13 @@ open class CounterPersistenceImpl : CounterPersistence {
     @Autowired
     @Qualifier("cacheManager")
     private lateinit var cacheManager: CacheManager
-    private val cache get() = cacheManager.getCache("counter")
+    protected val cache: Cache get() = cacheManager.getCache("counter")
 
 
     override val entityManager: EntityManager
         get() = defaultEntityManager
 
-    private fun updateCounter(id: String, step: Int): Long{
+    protected fun updateCounter(id: String, step: Int): Long {
 //        var value = value + step + CounterPersistence.DEFAULT_CACHE_STEP
         val cb = entityManager.criteriaBuilder
         val selectCri = cb.createQuery(CounterImpl::class.java)
@@ -41,8 +41,9 @@ open class CounterPersistenceImpl : CounterPersistence {
         val selectQuery = entityManager.createQuery(selectCri)
         selectQuery.lockMode = LockModeType.PESSIMISTIC_WRITE
         var value = selectQuery.resultList.first().value
-        value += (step + CounterPersistence.DEFAULT_CACHE_STEP)
-        updateCri.set("value", value).where(cb.equal(updateRoot.get<Expression<*>>("id"), id))
+        var newValue = (value + CounterPersistence.DEFAULT_CACHE_STEP)
+
+        updateCri.set("value", newValue).where(cb.equal(updateRoot.get<Expression<*>>("id"), id))
         val updateQuery = entityManager.createQuery(updateCri)
         updateQuery.executeUpdate()
         return value
@@ -69,6 +70,19 @@ open class CounterPersistenceImpl : CounterPersistence {
         return counter
     }
 
+    protected fun doIncrement(id: String, step: Int): Long {
+        var counter: CounterImpl = currentCounter(id)
+        if (counter.value + step >= counter.maxValue) {
+//            counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
+            counter.value = updateCounter(id, step)
+            counter.maxValue = counter.value + CounterPersistence.DEFAULT_CACHE_STEP
+            counter.value -= step
+        }
+        counter.value += step
+        cache.put(id, counter)
+        return counter.value
+    }
+
     override fun insert(id: String, initValue: Long): CounterImpl {
         val counter = CounterImpl(id, initValue)
         val currVal = counter.value
@@ -82,23 +96,15 @@ open class CounterPersistenceImpl : CounterPersistence {
     }
 
     override fun increment(id: String, step: Int): Long {
-        lateinit var counter: CounterImpl
+        var rs: Long
         synchronized(lock) {
-            counter = currentCounter(id)
-            if (counter.value + step >= counter.maxValue) {
-//                counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
-                counter.maxValue = updateCounter(id, step)
-                counter.value = counter.maxValue - CounterPersistence.DEFAULT_CACHE_STEP - step
-            }
-            counter.value += step
-            cache.put(id, counter)
+            rs = doIncrement(id, step)
         }
-        return counter.value
+        return rs
     }
 
-    //    @Synchronized
     override fun currentValue(id: String): Long {
-        var rs:Long
+        var rs: Long
         synchronized(lock) {
             rs = currentCounter(id).value
         }

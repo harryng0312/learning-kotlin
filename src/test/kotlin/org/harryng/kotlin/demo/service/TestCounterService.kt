@@ -50,12 +50,12 @@ class TestCounterService {
     fun testGetParalleExecutorCounterIncrement() {
         logger.info("=====")
         // 2_000 (500 * 4 in 1.682s) (100 * 20 in 2.698s) (50 * 40 in 2.693)
-        // 20_000 (5_000 * 4 in 2.373s)
+        // 20_000 (5_000 * 4 in 2.373s) (50 * 400 in 4.890s)
         // 20_000 * 10 in 2.557s
         // 200_000 * 4 in 9.666s
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 40
+        val noOfWorker = 400
         val loop = 50
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
@@ -69,7 +69,7 @@ class TestCounterService {
 //                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
                 val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
                 if (nextVal != null) {
-                    atomRs.set(nextVal)
+                    atomRs.addAndGet(1)
                     lastRs = nextVal
                 }
             }
@@ -79,17 +79,17 @@ class TestCounterService {
         for (i in 0 until noOfWorker step 1) {
             val task = pool.submit(getNextVal)
             lsTask.add(task)
-            logger.info("${i}\tTask:${task.hashCode()}")
+//            logger.info("${i}\tTask:${task.hashCode()}")
         }
         logger.info("+++++")
         for (task in lsTask) {
             val lastVal = task.get()
-            logger.info("Last:${lastVal}")
+//            logger.info("Last:${lastVal}")
         }
         pool.shutdown()
         currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Counter value: ${currVal}")
-        logger.info("Client result: ${atomRs.get()}")
+        logger.info("Atomic result: ${atomRs.get()}")
     }
 
     @Test
@@ -130,14 +130,14 @@ class TestCounterService {
             val task = pool.submit(callable)
             lsTask.add(task)
         }
-        for(task in lsTask){
-            logger.info("Task:${task.hashCode()}")
-        }
+//        for(task in lsTask){
+//            logger.info("Task:${task.hashCode()}")
+//        }
         logger.info("+++++")
         for (task in lsTask) {
 //            val lastVal = lsTask.first().join()
             val lastVal = task.join()
-            logger.info("Last:${lastVal}")
+//            logger.info("Last:${lastVal}")
         }
         pool.shutdown()
         currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }

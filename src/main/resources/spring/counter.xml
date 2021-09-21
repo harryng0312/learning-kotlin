@@ -6,10 +6,12 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="counterPersistence" class="org.harryng.kotlin.demo.persistence.CounterPersistenceImpl"/>
+    <bean id="counterSyncPersistence" class="org.harryng.kotlin.demo.persistence.CounterSyncPersistenceImpl"/>
     <bean id="counterService" class="org.harryng.kotlin.demo.service.CounterServiceImpl"/>
 
     <aop:config>
         <aop:pointcut id="counterPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterPersistenceImpl)"/>
+        <aop:pointcut id="counterSyncPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterSyncPersistenceImpl)"/>
         <aop:advisor pointcut-ref="counterPersistenceOperation" advice-ref="requiredNewTxAdvicePersistence"  order="0"/>
     </aop:config>
 </beans>
