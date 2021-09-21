@@ -2,7 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.5.10"
     id "java"
     // id "application"
-    // id 'com.github.johnrengelman.shadow' version '6.1.0'
+    // id 'com.github.johnrengelman.shadow' version "7.0.0"
 }
 
 group 'org.harryng.kotlin.demo'
@@ -41,6 +41,13 @@ dependencies {
     implementation "org.springframework:spring-orm:${springVer}"
     implementation "org.springframework:spring-tx:${springVer}"
     implementation "org.springframework:spring-aspects:${springVer}"
+    // implementation 'org.springframework:spring-aop:4.1.7.RELEASE'
+    // implementation 'org.springframework:spring-beans:4.1.7.RELEASE'
+    // implementation 'org.springframework:spring-context:4.1.7.RELEASE'
+    // implementation 'org.springframework:spring-core:4.1.7.RELEASE'
+    // implementation 'org.springframework:spring-expression:4.1.7.RELEASE'
+    // implementation "org.springframework:spring-tx:4.1.7.RELEASE"
+    // implementation "org.springframework:spring-aspects:4.1.7.RELEASE"
     implementation "org.springframework.data:spring-data-commons:${springDataVer}"
     implementation "org.springframework.data:spring-data-jpa:${springDataVer}"
 
@@ -53,55 +60,37 @@ dependencies {
 
 String mainClassName = "org.harryng.kotlin.demo.TestMain2Kt"
 
-// task fatJar(type: Jar) {
-// //    doFirst {
+//jar {
+//    doFirst {
+//        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+//        from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 //        manifest {
 //            if (!configurations.compileClasspath.isEmpty()) {
-//                attributes["Implementation-Title"] = "Gradle Jar File Example"
-//                attributes["Implementation-Version"] = archiveVersion
+//                // attributes["Implementation-Title"] = "Gradle Jar File Example"
+//                // attributes["Implementation-Version"] = archiveVersion
 //                attributes["Main-Class"] = mainClassName
-//                attributes["Class-Path"] = configurations.compileClasspath.collect { it.getName() }.join(' ')
+//                attributes["Class-Path"] = configurations.compileClasspath.files.collect {"${it.getName()}" }.join(' ')
 //            }
 //        }
-// //    }
-// //    archivesBaseName = project.name + "-all"
-//    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
-// }
-
-// task customFatJar(type: Jar) {
-//    manifest {
-//        attributes "Main-Class": mainClassName
 //    }
-// //    archivesBaseName = archivesBaseName
-//    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-// //    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
-// }
+//}
+// jar.dependsOn(copyLibs)
+ task copyLibs(type: Copy){
+     from configurations.compileClasspath
+     into "${buildDir}/libs/libs"
+//     into "${buildDir}/resources/main/libs"
+ }
 
-jar {
-    doFirst {
-//        archivesBaseName = project.name + "-all"
-    //    from configurations.runtimeClasspath
-        duplicatesStrategy = DuplicatesStrategy.INCLUDE
-        from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-        manifest {
-            if (!configurations.compileClasspath.isEmpty()) {
-                attributes["Implementation-Title"] = "Gradle Jar File Example"
-                attributes["Implementation-Version"] = archiveVersion
-                attributes["Main-Class"] = mainClassName
-                // attributes["Class-Path"] = configurations.compileClasspath.files.collect { it.getName() }.join(' ')
-            }
-        }
-    }
-}
+ jar {
+     manifest {
+         attributes 'Main-Class': mainClassName,
+             'Class-Path': configurations.compileClasspath.collect {"libs/${it.getName()}" }.join(' ')
+     }
+ }
+ jar.dependsOn(copyLibs)
 
-// jar {
+// shadowJar {
 //     manifest {
 //         attributes 'Main-Class': mainClassName
-//     }
-//     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-//     from {
-//         configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
 //     }
 // }
