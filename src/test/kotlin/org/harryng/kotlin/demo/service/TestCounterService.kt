@@ -49,14 +49,14 @@ class TestCounterService {
     @Test
     fun testGetParalleExecutorCounterIncrement() {
         logger.info("=====")
-        // 2_000 (500 * 4 in 1.682s) ()
+        // 2_000 (500 * 4 in 1.682s) (100 * 20 in 2.698s) (50 * 40 in 2.693)
         // 20_000 (5_000 * 4 in 2.373s)
         // 20_000 * 10 in 2.557s
         // 200_000 * 4 in 9.666s
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 4
-        val loop = 1
+        val noOfWorker = 40
+        val loop = 50
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Get currval:${currVal}")
@@ -66,8 +66,8 @@ class TestCounterService {
         val getNextVal = fun(): Long {
             var lastRs = 0L
             for (i in 0 until loop step 1) {
-                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
-//                val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
+//                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
+                val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
                 if (nextVal != null) {
                     atomRs.set(nextVal)
                     lastRs = nextVal
@@ -95,14 +95,13 @@ class TestCounterService {
     @Test
     fun testGetParalleForkJoinPoolCounterIncrement() {
         logger.info("=====")
-        // 200 * 10 in
-        // 2000 * 10 in 1.753s
-        // 20_000 * 10 in 2.557s
-        // 200_000 * 4 in 9.666s
+        // 2000 in 1.753s (200 * 10 in 2.630s) (100 * 20 in 2.647s) (50 * 40 in 2.681)
+        // 20_000 * 10 in 2.557s (200 * 100 in 3.929s) (100 * 200 in 4.033s) (50 * 400 in 4.057)
+        // 200_000 * 4 in 9.666s (200 * 1000 in 8.767s) (100 * 2000 in 4.033s) (50 * 4000 in 4.057)
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 10;
-        val loop = 1
+        val noOfWorker = 2000
+        val loop = 100
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Get currval:${currVal}")
@@ -112,7 +111,7 @@ class TestCounterService {
         val getNextVal = fun(): Long {
             var lastRs = 0L
             for (i in 0 until loop step 1) {
-                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
+                val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
                 if (nextVal != null) {
                     atomRs.set(nextVal)
                     lastRs = nextVal
@@ -125,10 +124,13 @@ class TestCounterService {
         val lsTask = mutableListOf<ForkJoinTask<Long>>()
 //        logger.info("seed task:${task.hashCode()}")
         for (i in 0 until noOfWorker step 1) {
+//            val callable = task.fork()
 //            val callable: () -> Long = getNextVal
             val callable = ForkJoinTask.adapt(getNextVal)
             val task = pool.submit(callable)
             lsTask.add(task)
+        }
+        for(task in lsTask){
             logger.info("Task:${task.hashCode()}")
         }
         logger.info("+++++")

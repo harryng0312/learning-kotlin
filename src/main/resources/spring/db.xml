@@ -53,6 +53,7 @@
             <map>
                 <entry key="showSql" value="${jpa.showSql}"/>
                 <entry key="hibernate.dialect" value="${jpa.dialect}"/>
+<!--                <entry key="hibernate.hbm2ddl.auto" value="create-drop" />-->
             </map>
         </property>
         <property name="loadTimeWeaver">

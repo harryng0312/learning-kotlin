@@ -5,17 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.cache.Cache
 import org.springframework.cache.CacheManager
-import org.springframework.cache.concurrent.ConcurrentMapCache
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 import javax.persistence.criteria.Expression
 
 open class CounterPersistenceImpl : CounterPersistence {
 
-    companion object {
-        //        @Volatile
-        var lock = Object()
-    }
+    //    companion object {
+
+    private val lock = Object()
+//    }
 
     @PersistenceContext(name = "primary")
     private lateinit var defaultEntityManager: EntityManager
@@ -40,7 +39,7 @@ open class CounterPersistenceImpl : CounterPersistence {
 
     @Throws(NullPointerException::class)
     protected fun currentCounter(id: String): CounterImpl {
-        var counter: CounterImpl
+        var counter: CounterImpl?
         var cacheValue: Cache.ValueWrapper? = cache[id]
         // check cache
         if (cacheValue == null) {
@@ -75,7 +74,7 @@ open class CounterPersistenceImpl : CounterPersistence {
         lateinit var counter: CounterImpl
         synchronized(lock) {
             counter = currentCounter(id)
-            if(counter.value + step >= counter.maxValue){
+            if (counter.value + step >= counter.maxValue) {
                 counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
                 updateCounter(id, counter.maxValue)
             }
@@ -85,9 +84,12 @@ open class CounterPersistenceImpl : CounterPersistence {
         return counter.value
     }
 
+    //    @Synchronized
     override fun currentValue(id: String): Long {
+        var rs:Long
         synchronized(lock) {
-            return currentCounter(id).value
+            rs = currentCounter(id).value
         }
+        return rs
     }
 }
