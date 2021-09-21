@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="counterPersistence" class="org.harryng.kotlin.demo.persistence.CounterPersistenceImpl"/>
-    <bean id="counterSyncPersistence" class="org.harryng.kotlin.demo.persistence.CounterSyncPersistenceImpl"/>
+    <bean id="counterLockerPersistence" class="org.harryng.kotlin.demo.persistence.CounterLockerPersistenceImpl"/>
     <bean id="counterService" class="org.harryng.kotlin.demo.service.CounterServiceImpl"/>
 
     <aop:config>

@@ -9,7 +9,8 @@ import kotlin.jvm.Throws
 class CounterServiceImpl : CounterService {
 
     @Autowired
-    @Qualifier("counterSyncPersistence")
+//    @Qualifier("counterPersistence")
+    @Qualifier("counterLockerPersistence")
     lateinit var persistence: CounterPersistence
 
     @Throws(RuntimeException::class)
