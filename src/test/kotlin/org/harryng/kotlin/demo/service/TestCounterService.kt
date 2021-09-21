@@ -26,7 +26,7 @@ class TestCounterService {
         logger.info("=====")
         // 2000 in 1.753s
         // 20_000 in 2.557s
-        // 200_000 in 4.380s
+        // 200_000 in 4.380s (7.885s with lock_write)
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
         val loop = 200_000
@@ -96,12 +96,12 @@ class TestCounterService {
     fun testGetParalleForkJoinPoolCounterIncrement() {
         logger.info("=====")
         // 2000 in 1.753s (200 * 10 in 2.630s) (100 * 20 in 2.647s) (50 * 40 in 2.681)
-        // 20_000 * 10 in 2.557s (200 * 100 in 3.929s) (100 * 200 in 4.033s) (50 * 400 in 4.057)
-        // 200_000 * 4 in 9.666s (200 * 1000 in 8.767s) (100 * 2000 in 4.033s) (50 * 4000 in 4.057)
+        // 20_000 * 10 in 2.557s (200 * 100 in 3.929s) (100 * 200 in 4.033s) (50 * 400 in 4.057s)
+        // 200_000 * 4 in 9.666s (200 * 1000 in 8.767s) (100 * 2000 in 9.522s) (50 * 4000 in 11.339s)
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 2000
-        val loop = 100
+        val noOfWorker = 4000
+        val loop = 50
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Get currval:${currVal}")

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.cache.Cache
 import org.springframework.cache.CacheManager
 import javax.persistence.EntityManager
+import javax.persistence.LockModeType
 import javax.persistence.PersistenceContext
 import javax.persistence.criteria.Expression
 
@@ -28,13 +29,23 @@ open class CounterPersistenceImpl : CounterPersistence {
     override val entityManager: EntityManager
         get() = defaultEntityManager
 
-    private fun updateCounter(id: String, value: Long) {
+    private fun updateCounter(id: String, step: Int): Long{
+//        var value = value + step + CounterPersistence.DEFAULT_CACHE_STEP
         val cb = entityManager.criteriaBuilder
-        val cd = cb.createCriteriaUpdate(CounterImpl::class.java)
-        val root = cd.from(CounterImpl::class.java)
-        cd.set("value", value).where(cb.equal(root.get<Expression<*>>("id"), id))
-        val updateQuery = entityManager.createQuery(cd)
+        val selectCri = cb.createQuery(CounterImpl::class.java)
+        val selectRoot = selectCri.from(CounterImpl::class.java)
+        val updateCri = cb.createCriteriaUpdate(CounterImpl::class.java)
+        val updateRoot = updateCri.from(CounterImpl::class.java)
+
+        selectCri.where(cb.equal(selectRoot.get<Expression<*>>("id"), id))
+        val selectQuery = entityManager.createQuery(selectCri)
+        selectQuery.lockMode = LockModeType.PESSIMISTIC_WRITE
+        var value = selectQuery.resultList.first().value
+        value += (step + CounterPersistence.DEFAULT_CACHE_STEP)
+        updateCri.set("value", value).where(cb.equal(updateRoot.get<Expression<*>>("id"), id))
+        val updateQuery = entityManager.createQuery(updateCri)
         updateQuery.executeUpdate()
+        return value
     }
 
     @Throws(NullPointerException::class)
@@ -44,7 +55,7 @@ open class CounterPersistenceImpl : CounterPersistence {
         // check cache
         if (cacheValue == null) {
             // if not exits in cache - select from db
-            counter = entityManager.find(CounterImpl::class.java, id)
+            counter = entityManager.find(CounterImpl::class.java, id, LockModeType.PESSIMISTIC_WRITE)
             // if not exits in db - create into db and cache
             if (counter == null) {
                 counter = insert(id)
@@ -75,8 +86,9 @@ open class CounterPersistenceImpl : CounterPersistence {
         synchronized(lock) {
             counter = currentCounter(id)
             if (counter.value + step >= counter.maxValue) {
-                counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
-                updateCounter(id, counter.maxValue)
+//                counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
+                counter.maxValue = updateCounter(id, step)
+                counter.value = counter.maxValue - CounterPersistence.DEFAULT_CACHE_STEP - step
             }
             counter.value += step
             cache.put(id, counter)
