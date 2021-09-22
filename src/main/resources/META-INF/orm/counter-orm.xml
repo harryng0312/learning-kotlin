@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.0"
-	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
-	<mapped-superclass class="org.harryng.kotlin.demo.entity.CounterModel">
-		<attributes>
-			<basic name="value">
-				<column name="value_" />
-			</basic>
-			<transient name="maxValue"/>
-		</attributes>
-	</mapped-superclass>
+<entity-mappings version="2.2"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+    <mapped-superclass class="org.harryng.kotlin.demo.entity.CounterModel">
+        <attributes>
+            <basic name="value">
+                <column name="value_"/>
+            </basic>
+            <transient name="maxValue"/>
+        </attributes>
 
-	<entity class="org.harryng.kotlin.demo.entity.CounterImpl">
-		<table name="counter" />
-<!--		<attributes>-->
-<!--			<id name="id"/>-->
-<!--		</attributes>-->
-	</entity>
+    </mapped-superclass>
+
+    <entity class="org.harryng.kotlin.demo.entity.CounterImpl">
+        <table name="counter"/>
+        <!--		<attributes>-->
+        <!--			<id name="id"/>-->
+        <!--		</attributes>-->
+    </entity>
 </entity-mappings>

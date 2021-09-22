@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.0"
-	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
-	<mapped-superclass class="org.harryng.kotlin.demo.entity.UserModel">
-		<attributes>
-			<basic name="username">
-				<column name="username" />
-			</basic>
-			<basic name="passwd">
-				<column name="passwd" />
-			</basic>
-			<basic name="passwdEncryptedMethod">
-				<column name="passwd_enc_method" />
-			</basic>
-			<basic name="screenName">
-				<column name="screenname" />
-			</basic>
-			<basic name="dob">
-				<column name="dob" />
-				<temporal>TIMESTAMP</temporal>
-			</basic>
-		</attributes>
-	</mapped-superclass>
+<entity-mappings version="2.2"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+    <mapped-superclass class="org.harryng.kotlin.demo.entity.UserModel">
+        <attributes>
+            <basic name="username">
+                <column name="username"/>
+            </basic>
+            <basic name="passwd">
+                <column name="passwd"/>
+            </basic>
+            <basic name="passwdEncryptedMethod">
+                <column name="passwd_enc_method"/>
+            </basic>
+            <basic name="screenName">
+                <column name="screenname"/>
+            </basic>
+            <basic name="dob">
+                <column name="dob"/>
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+        </attributes>
+    </mapped-superclass>
 
-	<entity class="org.harryng.kotlin.demo.entity.UserImpl">
-		<table name="auth_user" />
-<!--		<attributes>-->
-<!--			<id name="id"/>-->
-<!--		</attributes>-->
-<!-- 		<table-generator name="seq_default" allocation-size="1" -->
-<!-- 			initial-value="1" table="counter" pk-column-name="id" -->
-<!-- 			pk-column-value="task" value-column-name="count" /> -->
-		<!-- <attribute-override name=""> -->
-		<!-- </attribute-override> -->
+    <entity class="org.harryng.kotlin.demo.entity.UserImpl">
+        <table name="auth_user"/>
+        <!--		<attributes>-->
+        <!--			<id name="id"/>-->
+        <!--		</attributes>-->
+        <!-- 		<table-generator name="seq_default" allocation-size="1" -->
+        <!-- 			initial-value="1" table="counter" pk-column-name="id" -->
+        <!-- 			pk-column-value="task" value-column-name="count" /> -->
+        <!-- <attribute-override name=""> -->
+        <!-- </attribute-override> -->
 
-		<!-- <attributes> -->
-		<!-- <transient name=""/> -->
-		<!-- </attributes> -->
-	</entity>
+        <!-- <attributes> -->
+        <!-- <transient name=""/> -->
+        <!-- </attributes> -->
+    </entity>
 </entity-mappings>

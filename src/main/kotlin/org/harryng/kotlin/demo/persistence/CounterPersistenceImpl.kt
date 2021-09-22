@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.cache.Cache
 import org.springframework.cache.CacheManager
+import java.util.concurrent.atomic.AtomicLong
 import javax.persistence.EntityManager
 import javax.persistence.LockModeType
 import javax.persistence.PersistenceContext
@@ -41,12 +42,12 @@ open class CounterPersistenceImpl : CounterPersistence {
         val selectQuery = entityManager.createQuery(selectCri)
         selectQuery.lockMode = LockModeType.PESSIMISTIC_WRITE
         var value = selectQuery.resultList.first().value
-        var newValue = (value + CounterPersistence.DEFAULT_CACHE_STEP)
+        var newValue = (value.get() + CounterPersistence.DEFAULT_CACHE_STEP)
 
         updateCri.set("value", newValue).where(cb.equal(updateRoot.get<Expression<*>>("id"), id))
         val updateQuery = entityManager.createQuery(updateCri)
         updateQuery.executeUpdate()
-        return value
+        return value.get()
     }
 
     @Throws(NullPointerException::class)
@@ -72,26 +73,27 @@ open class CounterPersistenceImpl : CounterPersistence {
 
     protected fun doIncrement(id: String, step: Int): Long {
         var counter: CounterImpl = currentCounter(id)
-        if (counter.value + step >= counter.maxValue) {
+        if (counter.value.get() + step >= counter.maxValue) {
 //            counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
-            counter.value = updateCounter(id, step)
-            counter.maxValue = counter.value + CounterPersistence.DEFAULT_CACHE_STEP
-            counter.value -= step
+            counter.value.set(updateCounter(id, step))
+            counter.maxValue = counter.value.get() + CounterPersistence.DEFAULT_CACHE_STEP
+//            counter.value -= step
+            counter.value.getAndAdd(-step.toLong())
         }
-        counter.value += step
+        counter.value.getAndAdd(step.toLong())
         cache.put(id, counter)
-        return counter.value
+        return counter.value.get()
     }
 
     override fun insert(id: String, initValue: Long): CounterImpl {
-        val counter = CounterImpl(id, initValue)
-        val currVal = counter.value
-        counter.value = counter.maxValue
+        val counter = CounterImpl(id, AtomicLong(initValue))
+        val currVal = counter.value.get()
+        counter.value.set(counter.maxValue)
         entityManager.persist(counter)
         entityManager.flush()
         entityManager.detach(counter)
-        counter.value = currVal
-        counter.maxValue = counter.value + CounterPersistence.DEFAULT_CACHE_STEP
+        counter.value.set(currVal)
+        counter.maxValue = counter.value.get() + CounterPersistence.DEFAULT_CACHE_STEP
         return counter
     }
 
@@ -106,7 +108,7 @@ open class CounterPersistenceImpl : CounterPersistence {
     override fun currentValue(id: String): Long {
         var rs: Long
         synchronized(lock) {
-            rs = currentCounter(id).value
+            rs = currentCounter(id).value.get()
         }
         return rs
     }

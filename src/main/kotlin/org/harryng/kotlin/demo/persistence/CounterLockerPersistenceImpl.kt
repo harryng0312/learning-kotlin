@@ -20,7 +20,7 @@ open class CounterLockerPersistenceImpl : CounterPersistenceImpl() {
         var rs: Long
         try {
             locker.lock()
-            rs = currentCounter(id).value
+            rs = currentCounter(id).value.get()
         } finally {
             locker.unlock()
         }

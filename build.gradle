@@ -54,6 +54,7 @@ dependencies {
 //    implementation "org.eclipse.persistence:eclipselink:${eclipselinkVer}"
 //    implementation "org.eclipse.persistence:org.eclipse.persistence.jpa:${eclipselinkVer}"
 
+//    implementation "org.hibernate:hibernate-core-jakarta:${hibernateVer}"
     implementation "org.hibernate:hibernate-core:${hibernateVer}"
 
 }

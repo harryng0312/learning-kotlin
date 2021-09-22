@@ -1,8 +1,6 @@
 package org.harryng.kotlin.demo.persistence
 
 import org.harryng.kotlin.demo.entity.Entity
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository
-import org.springframework.data.repository.findByIdOrNull
 import java.io.Serializable
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
@@ -19,19 +17,19 @@ abstract class AbstractPersistence<T : Entity<Id>, Id : Serializable>(override v
     private lateinit var defaultEntityManager: EntityManager
     protected val entityManager: EntityManager get() = defaultEntityManager
 
-    protected val jpaRepository: SimpleJpaRepository<T, Id> by lazy { SimpleJpaRepository(entityClass, defaultEntityManager) }
+//    protected val jpaRepository: SimpleJpaRepository<T, Id> by lazy { SimpleJpaRepository(entityClass, defaultEntityManager) }
 
     override fun selectById(id: Id): T? {
-        return jpaRepository.findByIdOrNull(id)
+        return entityManager.find(entityClass, id)
     }
 
     override fun insert(obj: T): Int {
-        jpaRepository.save(obj)
+        entityManager.persist(obj)
         return 1
     }
 
     override fun update(obj: T): Int {
-        jpaRepository.save(obj)
+        entityManager.merge(obj)
         return 1
     }
 

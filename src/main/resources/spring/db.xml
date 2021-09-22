@@ -26,6 +26,8 @@
     <!--        <constructor-arg name="dataSource" ref="dataSource"/>-->
     <!--    </bean>-->
 
+<!--    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"-->
+<!--          destroy-method="destroy">-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           destroy-method="destroy">
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>

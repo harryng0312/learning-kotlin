@@ -51,11 +51,11 @@ class TestCounterService {
         logger.info("=====")
         // 2_000 (500 * 4 in 1.682s) (100 * 20 in 2.698s) (50 * 40 in 2.693) (20 * 100 in 2.811s)
         // 20_000 (5_000 * 4 in 2.373s) (50 * 400 in [lock]4.890s, [synced]4.503s)
-        // 200_000 in 4.380s (7.885s with lock_write) (50 * 400 in [lock]10.016s, [synced]10.969s)
+        // 200_000 in 4.380s (7.885s with lock_write) (50 * 400 in [lock]10.016s, [synced]10.969s)(20*10_000 in 13.103/11.503/12.045s)
         // 200_000 * 4 in 9.666s
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 100
+        val noOfWorker = 10_000
         val loop = 20
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
