@@ -1,15 +1,18 @@
 package org.harryng.kotlin.demo.service
 
+import kotlinx.coroutines.*
 import org.harryng.kotlin.demo.SpringUtil
 import org.harryng.kotlin.demo.entity.UserImpl
 import org.harryng.kotlin.demo.initApplicationContext
 import org.harryng.kotlin.demo.util.SessionHolder
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicLong
+import kotlin.system.measureTimeMillis
 
 class TestCounterService {
     val logger: Logger = LoggerFactory.getLogger(TestCounterService::class.java)
@@ -44,6 +47,69 @@ class TestCounterService {
         currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Counter value: ${currVal}")
         logger.info("Result: ${atomRs.get()}")
+    }
+
+//    suspend fun getNextVal(loop: Int, atomRs: AtomicLong, counterService: CounterService):Long {
+//        var lastRs = 0L
+//        for (i in 0 until loop step 1) {
+////                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
+//            val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
+//            if (nextVal != null) {
+//                atomRs.addAndGet(1)
+//                lastRs = nextVal
+//            }
+//        }
+//        return lastRs
+//    }
+
+    @Test
+    fun testGetNonBlockingCounterIncrement() {
+        logger.info("=====")
+        // 200 (20 * 10 in 2.761s)
+        val noOfWorker = 10
+        val loop = 20
+        val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
+        var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
+        logger.info("Get currval:${currVal}")
+        val atomRs = AtomicLong(currVal ?: 0L)
+        val getNextVal: suspend () -> Long = ret@{ ->
+            var lastRs = 0L
+            for (i in 0 until loop step 1) {
+//                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
+                val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
+                if (nextVal != null) {
+                    atomRs.addAndGet(1)
+                    lastRs = nextVal
+                }
+            }
+            return@ret lastRs
+        }
+        val time = runBlocking {
+            val lsTask = mutableListOf<Deferred<Long>>()
+            logger.info("Main Thread: ${Thread.currentThread().name}:${Thread.currentThread().hashCode()}")
+            for (i in 0 until noOfWorker step 1) {
+                val task = async (Dispatchers.Default) {
+                    logger.info(
+                        "Thread[${i}]: ${Thread.currentThread().name}:${
+                            Thread.currentThread().hashCode()
+                        }"
+                    )
+//                    getNextVal(loop, atomRs, counterService)
+                    getNextVal()
+                }
+                lsTask.add(task)
+//                logger.info("${i}\tTask:${task.hashCode()}")
+            }
+            logger.info("+++++")
+            for (task in lsTask) {
+                val lastVal = task.await()
+//                logger.info("Last:${lastVal}")
+            }
+        }
+//        pool.shutdown()
+        currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
+        logger.info("Counter value: ${currVal}")
+        logger.info("Atomic result: ${atomRs.get()}")
     }
 
     @Test

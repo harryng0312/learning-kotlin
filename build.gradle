@@ -24,6 +24,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     // implementation "com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:6.1.0", ext:"pom"
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinCoroutinesVer}"
+
     implementation "javax.persistence:javax.persistence-api:2.2"
 //    implementation "jakarta.persistence:jakarta.persistence-api:3.0.0"
     implementation "org.slf4j:slf4j-api:${slf4jVer}"

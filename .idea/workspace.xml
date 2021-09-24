@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- Libs beside, reentrance lock is better than sync">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/AtomicLongConverter.kt" afterDir="false" />
+    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestNonBlocking.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl_bak.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/persistence/CounterPersistence_bak.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/CounterImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/CounterImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/CounterModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/CounterModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/UserImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/UserImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/AbstractPersistence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/AbstractPersistence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/BasePersistence2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/BasePersistence2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/orm/common-orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/orm/common-orm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/orm/counter-orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/orm/counter-orm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/orm/user-orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/orm/user-orm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/db.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/TestMain2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/TestMain2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,13 +102,13 @@
       <recent name="org.harryng.kotlin.demo.persistence" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement">
-    <configuration name="TestCounterService.testGetParalleExecutorCounterIncrement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.TestNonBlocking.testCoroutine">
+    <configuration name="TestCounterService.testGetCounterIncrement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestCounterService.testGetParalleExecutorCounterIncrement&quot;" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestCounterService.testGetCounterIncrement&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -134,12 +124,54 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestCounterService.testGetParalleForkJoinPoolCounterIncrement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestCounterService.testGetNonBlockingCounterIncrement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestCounterService.testGetParalleForkJoinPoolCounterIncrement&quot;" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestCounterService.testGetNonBlockingCounterIncrement&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestNonBlocking.testCoroutine" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestNonBlocking.testCoroutine&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestThread.testCoroutine" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestThread.testCoroutine&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -174,15 +206,28 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="TestMain2Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.harryng.kotlin.demo.TestMain2Kt" />
+      <module name="learning-kotlin.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Gradle.learning-kotlin" />
-      <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
-      <item itemvalue="Gradle.TestCounterService.testGetParalleForkJoinPoolCounterIncrement" />
+      <item itemvalue="Gradle.TestThread.testCoroutine" />
+      <item itemvalue="Kotlin.TestMain2Kt" />
+      <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
+      <item itemvalue="Gradle.TestCounterService.testGetCounterIncrement" />
+      <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
-        <item itemvalue="Gradle.TestCounterService.testGetParalleForkJoinPoolCounterIncrement" />
+        <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
+        <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
+        <item itemvalue="Gradle.TestCounterService.testGetCounterIncrement" />
+        <item itemvalue="Gradle.TestThread.testCoroutine" />
+        <item itemvalue="Kotlin.TestMain2Kt" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +242,8 @@
       <workItem from="1632214090881" duration="5219000" />
       <workItem from="1632219464945" duration="722000" />
       <workItem from="1632275913757" duration="114000" />
-      <workItem from="1632278562412" duration="5639000" />
+      <workItem from="1632278562412" duration="5703000" />
+      <workItem from="1632452218259" duration="10322000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -241,7 +287,21 @@
       <option name="project" value="LOCAL" />
       <updated>1632276011598</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="- Libs beside, reentrance lock is better than sync">
+      <created>1632284243009</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1632284243009</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- Libs beside, reentrance lock is better than sync">
+      <created>1632284267091</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1632284267091</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
