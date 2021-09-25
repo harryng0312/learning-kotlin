@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "org.harryng.kotlin.demo.dto.gen";
+option java_package = "org.harryng.kotlin.demo.rpc.gen";
 option java_outer_classname = "ChatServiceProto";
 option objc_class_prefix = "RTG";
 

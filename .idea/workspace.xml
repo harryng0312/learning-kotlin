@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- Libs beside, reentrance lock is better than sync">
-      <change afterPath="$PROJECT_DIR$/.idea/learning-kotlin.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/grpc-gen.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/gen.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc/protos/user.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/rpc/ChatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc-gen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/grpc-gen.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc/protos/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/protos/user.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +46,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -107,6 +112,12 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.harryng.kotlin.demo.rpc" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.harryng.kotlin.demo.rpc" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="org.harryng.kotlin.demo.persistence" />
@@ -289,7 +300,7 @@
       <workItem from="1632452218259" duration="10322000" />
       <workItem from="1632562828544" duration="50000" />
       <workItem from="1632583885997" duration="26000" />
-      <workItem from="1632583931603" duration="11036000" />
+      <workItem from="1632583931603" duration="14593000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -347,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632284267091</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="- Libs beside, reentrance lock is better than sync">
+      <created>1632595005493</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1632595005493</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

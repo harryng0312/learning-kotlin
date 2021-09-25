@@ -5,6 +5,7 @@ export JAVA_OUTPUT_FILE=./src/main/java
 export KT_OUTPUT_FILE=./src/main/kotlin
 export DIR_OF_PROTO_FILE=./rpc/protos
 export PROTO_FILE=$DIR_OF_PROTO_FILE/*.proto
+
 protoc --plugin=protoc-gen-grpc-java=$GRPC_JAVA_GEN \
 --grpc-java_out=$JAVA_OUTPUT_FILE --java_out=$JAVA_OUTPUT_FILE \
 --proto_path=$DIR_OF_PROTO_FILE $PROTO_FILE
