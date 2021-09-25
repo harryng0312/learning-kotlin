@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.harryng.kotlin.demo.dto.gen";
+option java_outer_classname = "ChatServiceProto";
+option objc_class_prefix = "RTG";
+
+package org.harryng.grpc.demo;
+
+service ChatService {
+    rpc GetCurrentDate(GetCurrentDateRequest) returns (GetCurrentDateResponse) {}
+    rpc LoginChat(AuthRequest) returns (AuthResponse){}
+    rpc LogoutChat(AuthRequest) returns (AuthResponse){}
+    rpc SendChatStream(stream ChatMessage) returns (stream ChatSignal) {}
+}
+
+message GetCurrentDateRequest {
+    string name = 1;
+}
+
+message GetCurrentDateResponse {
+    string name     = 1;
+    string result   = 2;
+}
+
+enum UserState{
+    OFFLINE = 0;
+    ONLINE  = 1;
+    INVALID = 2;
+}
+
+enum MessageState{
+    NOT_SEND    = 0;
+    IN_QUEUE    = 1;
+    SENDING     = 2;
+    RECEIVED    = 3;
+    READ        = 4;
+}
+
+enum MessageType{
+    PING    = 0;
+    TEXT    = 1;
+    FILE    = 2;
+    STREAM  = 3;
+}
+
+message AuthResponse{
+    int32 result = 1;
+}
+
+message AuthRequest{
+    User user = 1;
+}
+
+message User{
+    string id = 1;
+    string username = 2;
+    UserState state = 3;
+}
+
+message ChatMessage{
+    string id = 1;
+    string senderId = 2;
+    string receiverId = 3;
+    MessageType type = 4;
+    bytes message = 5;
+    MessageState state = 6;
+}
+
+message ChatSignal{
+    MessageState state = 1;
+}
