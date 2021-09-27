@@ -2,6 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.5.10"
     id "java"
     // id "application"
+//    id "com.google.protobuf" version "0.8.17"
     // id 'com.github.johnrengelman.shadow' version "7.0.0"
 }
 
@@ -12,18 +13,17 @@ repositories {
     mavenCentral()
 }
 compileTestJava {
- 	sourceCompatibility = 11
-	targetCompatibility = 11
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 compileJava {
-	sourceCompatibility = 11
-	targetCompatibility = 11
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinStdLibVer}"
     // implementation "com.github.johnrengelman.shadow:com.github.johnrengelman.shadow.gradle.plugin:6.1.0", ext:"pom"
-
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinCoroutinesVer}"
 
     implementation "javax.persistence:javax.persistence-api:2.2"
@@ -59,9 +59,21 @@ dependencies {
 //    implementation "org.hibernate:hibernate-core-jakarta:${hibernateVer}"
     implementation "org.hibernate:hibernate-core:${hibernateVer}"
 
+    // for base gRPC
+    implementation "io.grpc:grpc-netty:${grpcVer}"
+    implementation "io.grpc:grpc-stub:${grpcVer}"
+    implementation "io.grpc:grpc-kotlin-stub:${grpcKotlinStubVer}"
+    implementation "io.grpc:grpc-protobuf:${grpcVer}"
+    // for generated code
+    implementation "com.google.protobuf:protobuf-java:${protobufVer}"
+    implementation "com.google.protobuf:protobuf-kotlin-lite:${protobufVer}"
+
+
+//    implementation "io.grpc:grpc-context:${grpcVer}"
+//    implementation "io.grpc:grpc-all:${grpcVer}"
 }
 
-String mainClassName = "org.harryng.kotlin.demo.TestMain2Kt"
+// String mainClassName = "org.harryng.kotlin.demo.TestMain2Kt"
 
 //jar {
 //    doFirst {
@@ -78,22 +90,48 @@ String mainClassName = "org.harryng.kotlin.demo.TestMain2Kt"
 //    }
 //}
 // jar.dependsOn(copyLibs)
- task copyLibs(type: Copy){
-     from configurations.compileClasspath
-     into "${buildDir}/libs/libs"
+//  task copyLibs(type: Copy){
+//      from configurations.compileClasspath
+//      into "${buildDir}/libs/libs"
 //     into "${buildDir}/resources/main/libs"
- }
+//  }
 
- jar {
-     manifest {
-         attributes 'Main-Class': mainClassName,
-             'Class-Path': configurations.compileClasspath.collect {"libs/${it.getName()}" }.join(' ')
-     }
- }
- jar.dependsOn(copyLibs)
+// jar {
+//     manifest {
+//         attributes 'Main-Class': mainClassName,
+//             'Class-Path': configurations.compileClasspath.collect {"libs/${it.getName()}" }.join(' ')
+//     }
+// }
+//  jar.dependsOn(copyLibs)
 
 // shadowJar {
 //     manifest {
 //         attributes 'Main-Class': mainClassName
 //     }
 // }
+
+// gRPC: 
+//protoc --plugin=protoc-gen-grpc-java=$PATH_TO_PLUGIN -Irpc/protos/ --kotlin_out=src/main/kotlin/ --grpc-kotlin_out=src/main/kotlin rpc/protos/*.proto
+//protoc --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out="$OUTPUT_FILE" --proto_path="$DIR_OF_PROTO_FILE" "$PROTO_FILE"
+
+//protobuf {
+//    protoc {
+//        artifact = "com.google.protobuf:protoc:SOME_VERSION"
+//    }
+//    plugins {
+//        id("grpc") {
+//            artifact = "io.grpc:protoc-gen-grpc-java:SOME_VERSION"
+//        }
+//        id("grpckt") {
+//            artifact = "io.grpc:protoc-gen-grpc-kotlin:SOME_VERSION:jdk7@jar"
+//        }
+//    }
+//    generateProtoTasks {
+//        ofSourceSet("main").forEach {
+//            it.plugins {
+//                id("grpc")
+//                id("grpckt")
+//            }
+//        }
+//    }
+//}

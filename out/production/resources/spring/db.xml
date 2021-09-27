@@ -4,9 +4,12 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <tx:annotation-driven transaction-manager="dbTransactionManager" mode="aspectj"/>
-    <import resource="common.xml"/>
+
+    <context:property-placeholder location="classpath:db.properties"/>
+
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${db.driver}"/>
         <property name="url" value="${db.url}"/>
@@ -23,8 +26,6 @@
     <!--        <constructor-arg name="dataSource" ref="dataSource"/>-->
     <!--    </bean>-->
 
-<!--    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"-->
-<!--          destroy-method="destroy">-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           destroy-method="destroy">
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
@@ -52,7 +53,6 @@
             <map>
                 <entry key="showSql" value="${jpa.showSql}"/>
                 <entry key="hibernate.dialect" value="${jpa.dialect}"/>
-<!--                <entry key="hibernate.hbm2ddl.auto" value="create-drop" />-->
             </map>
         </property>
         <property name="loadTimeWeaver">

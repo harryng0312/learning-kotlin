@@ -7,16 +7,15 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <aop:aspectj-autoproxy/>
-    <import resource="db.xml"/>
     <!-- processor aspect -->
-    <!--    <bean id="processorOutputResolver" class="com.videabiz.badgechain.aop.ProcessorOutputResolver"/>-->
-    <!--    <aop:config>-->
-    <!--        <aop:aspect id="aspectProcessorOutputResolver" ref="processorOutputResolver">-->
-    <!--            <aop:pointcut id="resolverOutputResultPointcut"-->
-    <!--                          expression="execution(public * com.videabiz.badgechain.processor..*.*(..))"/>-->
-    <!--            <aop:around method="processOutputResult" pointcut-ref="resolverOutputResultPointcut"/>-->
-    <!--        </aop:aspect>-->
-    <!--    </aop:config>-->
+<!--    <bean id="processorOutputResolver" class="com.videabiz.badgechain.aop.ProcessorOutputResolver"/>-->
+<!--    <aop:config>-->
+<!--        <aop:aspect id="aspectProcessorOutputResolver" ref="processorOutputResolver">-->
+<!--            <aop:pointcut id="resolverOutputResultPointcut"-->
+<!--                          expression="execution(public * com.videabiz.badgechain.processor..*.*(..))"/>-->
+<!--            <aop:around method="processOutputResult" pointcut-ref="resolverOutputResultPointcut"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
 
     <!-- transaction aspect -->
     <!-- aspectj -->
@@ -87,10 +86,9 @@
       of an operation defined by the FooService interface -->
     <aop:config>
         <aop:pointcut id="persistenceOperation" expression="within(org.harryng.kotlin.demo..persistence.*)"/>
-        <aop:pointcut id="serviceOperation"
-                      expression="within(org.harryng.kotlin.demo..service.*) &amp;&amp; !@annotation(org.springframework.transaction.annotation.Transactional)"/>
-        <aop:advisor pointcut-ref="persistenceOperation" advice-ref="requiredTxAdvicePersistence" order="0"/>
-        <aop:advisor pointcut-ref="serviceOperation" advice-ref="supportTxAdvice" order="0"/>
+        <aop:pointcut id="serviceOperation" expression="within(org.harryng.kotlin.demo..service.*) &amp;&amp; !@annotation(org.springframework.transaction.annotation.Transactional)"/>
+        <aop:advisor pointcut-ref="persistenceOperation" advice-ref="requiredTxAdvicePersistence"  order="0"/>
+        <aop:advisor pointcut-ref="serviceOperation" advice-ref="supportTxAdvice"  order="0"/>
     </aop:config>
 
 </beans>
