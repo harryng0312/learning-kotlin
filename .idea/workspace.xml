@@ -216,10 +216,10 @@
     <list>
       <item itemvalue="Gradle.learning-kotlin" />
       <item itemvalue="Gradle.TestThread.testCoroutine" />
-      <item itemvalue="Kotlin.TestMain2Kt" />
       <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
       <item itemvalue="Gradle.TestCounterService.testGetCounterIncrement" />
       <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
+      <item itemvalue="Kotlin.TestMain2Kt" />
     </list>
     <recent_temporary>
       <list>
