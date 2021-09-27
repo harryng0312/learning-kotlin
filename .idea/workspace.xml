@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- building the gRPC java and kt">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/rpc/ChatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/rpc/ChatServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKtImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +310,7 @@
       <workItem from="1632562828544" duration="50000" />
       <workItem from="1632583885997" duration="26000" />
       <workItem from="1632583931603" duration="14678000" />
-      <workItem from="1632711118538" duration="7647000" />
+      <workItem from="1632711118538" duration="7841000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -386,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632598901878</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="- building the gRPC java and kt">
+      <created>1632718816654</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1632718816654</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

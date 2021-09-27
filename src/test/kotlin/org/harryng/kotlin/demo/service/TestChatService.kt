@@ -68,6 +68,11 @@ class TestChatService {
     }
 
     @Test
+    fun testStartServer() {
+        startServer()
+    }
+
+    @Test
     fun testSendChatStream() {
         val n = 10
         var msg = ChatMessage.newBuilder()
@@ -90,7 +95,7 @@ class TestChatService {
                     mess.state = msg.state;
                     mess.message = ByteString.copyFrom(msg.message.toString("utf-8"), Charset.forName("utf8"))
 //                    Thread.sleep(2_000)
-                    delay(2_000)
+                    delay(1_000)
                     logger.info("create msg:$i");
                     emit(mess.build())
                 }
@@ -102,7 +107,7 @@ class TestChatService {
                 .build()
             try {
                 val client = ChatServiceGrpcKt.ChatServiceCoroutineStub(channel)
-                val response = async { client.sendChatStream(requests)}
+                val response = async { client.sendChatStream(requests) }
 //                response.collect {
 //                    logger.info("From Server: ${it.state}")
 //                }
