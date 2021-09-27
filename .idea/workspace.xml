@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ks/cmd.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,16 +127,14 @@
       <recent name="org.harryng.kotlin.demo.persistence" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestChatService.testSendChatStream">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Gradle.TestChatService.testStartServer">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -296,8 +293,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestChatService.testSendChatStream" />
         <item itemvalue="Gradle.TestChatService.testStartServer" />
+        <item itemvalue="Gradle.TestChatService.testSendChatStream" />
         <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
         <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
         <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
@@ -322,6 +319,7 @@
       <workItem from="1632583931603" duration="14678000" />
       <workItem from="1632711118538" duration="7881000" />
       <workItem from="1632725781963" duration="5804000" />
+      <workItem from="1632734921506" duration="3042000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -421,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632732321552</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632734118371</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1632734118371</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
