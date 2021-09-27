@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- building the gRPC java and kt">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/interceptor/AuthInterceptor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/grpc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spring/abstract.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/learning-kotlin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/learning-kotlin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/service/ChatServiceKt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKtImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/service/ChatServiceKtImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-conf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-conf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/aop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/aop.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/common.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/common.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/db.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" afterDir="false" />
-    </list>
+    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- building the gRPC java and kt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,6 +44,9 @@
         <option value="spring-beans.schema" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="grpc" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
