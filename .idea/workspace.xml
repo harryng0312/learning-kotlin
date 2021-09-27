@@ -10,7 +10,6 @@
       <change afterPath="$PROJECT_DIR$/src/main/resources/grpc.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/spring/abstract.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/learning-kotlin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/learning-kotlin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" afterDir="false" />
@@ -420,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632719017481</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632731806630</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1632731806630</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +448,8 @@
     <MESSAGE value="- Libs beside" />
     <MESSAGE value="- Libs beside, reentrance lock is better than sync" />
     <MESSAGE value="- building the gRPC java and kt" />
-    <option name="LAST_COMMIT_MESSAGE" value="- building the gRPC java and kt" />
+    <MESSAGE value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/learning_kotlin$TestCounterService_testGetParalleExecutorCounterIncrement.ic" NAME="TestCounterService.testGetParalleExecutorCounterIncrement Coverage Results" MODIFIED="1631992189286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
