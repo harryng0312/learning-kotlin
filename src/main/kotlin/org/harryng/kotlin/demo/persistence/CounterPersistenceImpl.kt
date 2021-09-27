@@ -50,8 +50,7 @@ open class CounterPersistenceImpl : CounterPersistence {
         return value.get()
     }
 
-    @Throws(NullPointerException::class)
-    protected fun currentCounter(id: String): CounterImpl {
+    override fun currentCounter(id: String): CounterImpl {
         var counter: CounterImpl?
         var cacheValue: Cache.ValueWrapper? = cache[id]
         // check cache
@@ -71,7 +70,7 @@ open class CounterPersistenceImpl : CounterPersistence {
         return counter
     }
 
-    protected fun doIncrement(id: String, step: Int): Long {
+    override fun doIncrement(id: String, step: Int): Long {
         var counter: CounterImpl = currentCounter(id)
         if (counter.value.get() + step >= counter.maxValue) {
 //            counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP

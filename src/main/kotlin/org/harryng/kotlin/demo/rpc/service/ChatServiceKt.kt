@@ -1,4 +1,4 @@
-package org.harryng.kotlin.demo.rpc
+package org.harryng.kotlin.demo.rpc.service
 
 import kotlinx.coroutines.flow.Flow
 import org.harryng.kotlin.demo.rpc.gen.*

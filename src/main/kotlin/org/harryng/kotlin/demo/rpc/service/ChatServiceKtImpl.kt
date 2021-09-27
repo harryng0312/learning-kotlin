@@ -1,9 +1,8 @@
-package org.harryng.kotlin.demo.rpc
+package org.harryng.kotlin.demo.rpc.service
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onEach
 import org.harryng.kotlin.demo.rpc.gen.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

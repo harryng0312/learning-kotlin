@@ -5,13 +5,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <import resource="aop.xml"/>
+
     <bean id="counterPersistence" class="org.harryng.kotlin.demo.persistence.CounterPersistenceImpl"/>
     <bean id="counterLockerPersistence" class="org.harryng.kotlin.demo.persistence.CounterLockerPersistenceImpl"/>
     <bean id="counterService" class="org.harryng.kotlin.demo.service.CounterServiceImpl"/>
 
     <aop:config>
         <aop:pointcut id="counterPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterPersistenceImpl)"/>
-        <aop:pointcut id="counterSyncPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterSyncPersistenceImpl)"/>
+        <aop:pointcut id="counterLockerPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterLockerPersistenceImpl)"/>
         <aop:advisor pointcut-ref="counterPersistenceOperation" advice-ref="requiredNewTxAdvicePersistence"  order="0"/>
+        <aop:advisor pointcut-ref="counterLockerPersistenceOperation" advice-ref="supportTxAdvice"  order="0"/>
     </aop:config>
 </beans>

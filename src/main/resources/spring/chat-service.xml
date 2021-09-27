@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="common.xml"/>
+    <bean id="chatService" class="org.harryng.kotlin.demo.rpc.service.ChatServiceKtImpl"/>
+    <bean id="authInterceptor" class="org.harryng.kotlin.demo.rpc.interceptor.AuthInterceptor"/>
 
-    <bean id="chatService" class="org.harryng.kotlin.demo.rpc.ChatServiceKtImpl" >
-        <constructor-arg name="" value=""/>
+    <bean id="grpcServer" class="org.harryng.kotlin.demo.rpc.server.GrpcServer"
+          init-method="startServer" destroy-method="block">
+        <constructor-arg name="port" value="${gprc.server.port}"/>
+        <constructor-arg name="services">
+            <list>
+                <ref bean="chatService"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="interceptors">
+            <list>
+                <ref bean="authInterceptor"/>
+            </list>
+        </constructor-arg>
     </bean>
 
 </beans>
