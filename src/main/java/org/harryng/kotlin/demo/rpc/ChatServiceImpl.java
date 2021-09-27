@@ -1,12 +1,9 @@
 package org.harryng.kotlin.demo.rpc;
 
-import io.grpc.stub.ServerCalls;
 import io.grpc.stub.StreamObserver;
 import org.harryng.kotlin.demo.rpc.gen.ChatMessage;
 import org.harryng.kotlin.demo.rpc.gen.ChatServiceGrpc;
 import org.harryng.kotlin.demo.rpc.gen.ChatSignal;
-
-import static org.harryng.kotlin.demo.rpc.gen.ChatServiceGrpc.getSendChatStreamMethod;
 
 public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
     @Override

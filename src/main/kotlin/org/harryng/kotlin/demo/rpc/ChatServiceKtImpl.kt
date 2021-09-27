@@ -1,14 +1,19 @@
 package org.harryng.kotlin.demo.rpc
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onEach
 import org.harryng.kotlin.demo.rpc.gen.*
-import java.text.DateFormat
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ChatService : ChatServiceGrpcKt.ChatServiceCoroutineImplBase() {
+class ChatServiceKtImpl : ChatServiceGrpcKt.ChatServiceCoroutineImplBase(), ChatServiceKt {
     companion object{
         val dataFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        val logger: Logger = LoggerFactory.getLogger(ChatServiceKtImpl::class.java)
     }
     override suspend fun getCurrentDate(request: GetCurrentDateRequest): GetCurrentDateResponse {
         val res = GetCurrentDateResponse.newBuilder().apply {
@@ -27,6 +32,14 @@ class ChatService : ChatServiceGrpcKt.ChatServiceCoroutineImplBase() {
     }
 
     override fun sendChatStream(requests: Flow<ChatMessage>): Flow<ChatSignal> {
-        return super.sendChatStream(requests)
+        val response = flow<ChatSignal> {
+            requests.collect { msg ->
+                logger.info("Client msg on Server: ${msg.state} - ${msg.message.toString("utf8")}")
+                val chatSignal = ChatSignal.newBuilder()
+                chatSignal.state = MessageState.SENDING
+                emit(chatSignal.build())
+            }
+        }
+        return response
     }
 }

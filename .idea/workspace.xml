@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- Libs beside, reentrance lock is better than sync">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/rpc/ChatServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- building the gRPC java and kt">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKt.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc-gen.sh" beforeDir="false" afterPath="$PROJECT_DIR$/grpc-gen.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/protos/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/protos/user.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/rpc/ChatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/harryng/kotlin/demo/rpc/ChatServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKtImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +45,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -101,7 +101,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../android/sdk_li" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/spring" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -111,6 +111,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/spring" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -123,19 +124,38 @@
       <recent name="org.harryng.kotlin.demo.persistence" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.learning-kotlin [build]">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Gradle.TestChatService.testSendChatStream">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="TestChatService.testSendChatStream" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestChatService.testSendChatStream&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="TestCounterService.testGetCounterIncrement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -259,13 +279,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestMain2Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.harryng.kotlin.demo.TestMain2Kt" />
-      <module name="learning-kotlin.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Gradle.learning-kotlin [build]" />
       <item itemvalue="Gradle.learning-kotlin [clean]" />
@@ -273,15 +286,15 @@
       <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
       <item itemvalue="Gradle.TestCounterService.testGetCounterIncrement" />
       <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
-      <item itemvalue="Kotlin.TestMain2Kt" />
+      <item itemvalue="Gradle.TestChatService.testSendChatStream" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestChatService.testSendChatStream" />
         <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
         <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
         <item itemvalue="Gradle.TestCounterService.testGetCounterIncrement" />
         <item itemvalue="Gradle.TestThread.testCoroutine" />
-        <item itemvalue="Kotlin.TestMain2Kt" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +313,8 @@
       <workItem from="1632452218259" duration="10322000" />
       <workItem from="1632562828544" duration="50000" />
       <workItem from="1632583885997" duration="26000" />
-      <workItem from="1632583931603" duration="14593000" />
+      <workItem from="1632583931603" duration="14678000" />
+      <workItem from="1632711118538" duration="7647000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -365,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632595005493</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- building the gRPC java and kt">
+      <created>1632598901878</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1632598901878</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +407,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Libs beside" />
     <MESSAGE value="- Libs beside, reentrance lock is better than sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Libs beside, reentrance lock is better than sync" />
+    <MESSAGE value="- building the gRPC java and kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- building the gRPC java and kt" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/learning_kotlin$TestCounterService_testGetParalleExecutorCounterIncrement.ic" NAME="TestCounterService.testGetParalleExecutorCounterIncrement Coverage Results" MODIFIED="1631992189286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
