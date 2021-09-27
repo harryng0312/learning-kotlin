@@ -14,9 +14,14 @@ class GrpcServer(val port: Int = 50051,
     private lateinit var server: Server
 
     private fun init() {
+//        val compressorRegistry: CompressorRegistry = CompressorRegistry.newEmptyInstance()
+//        compressorRegistry.register(Codec.Gzip())
+//        compressorRegistry.register(Codec.Identity.NONE)
+        val compressorRegistry: CompressorRegistry = CompressorRegistry.getDefaultInstance()
+
         val serverBuilder = ServerBuilder
             .forPort(port)
-            .compressorRegistry(CompressorRegistry.getDefaultInstance())
+            .compressorRegistry(compressorRegistry)
         services.forEach { elem -> serverBuilder.addService(elem) }
         interceptors.forEach { elem -> serverBuilder.intercept(elem) }
         server = serverBuilder.build()
@@ -25,6 +30,7 @@ class GrpcServer(val port: Int = 50051,
     fun startServer() {
         init()
         server.start()
+        logger.info("Server is started!")
         Runtime.getRuntime().addShutdownHook(Thread {
             logger.info("Shutting down gRPC server.")
             this.stop()

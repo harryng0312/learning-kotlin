@@ -34,7 +34,8 @@ class TestChatService {
 
     @Test
     fun testStartServer() {
-        SpringUtil.applicationContext.getBean(GrpcServer::class.java)
+        val grpcServer = SpringUtil.applicationContext.getBean(GrpcServer::class.java)
+        grpcServer.block()
     }
 
     @Test

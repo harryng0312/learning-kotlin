@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- building the gRPC java and kt">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/interceptor/AuthInterceptor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/grpc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spring/abstract.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/learning-kotlin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/learning-kotlin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/service/ChatServiceKt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/ChatServiceKtImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/service/ChatServiceKtImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-conf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-conf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/aop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/aop.xml" afterDir="false" />
+    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/common.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/common.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/db.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestChatService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +128,7 @@
       <recent name="org.harryng.kotlin.demo.persistence" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement">
+  <component name="RunManager" selected="Gradle.TestChatService.testSendChatStream">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -311,9 +296,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
-        <item itemvalue="Gradle.TestChatService.testStartServer" />
         <item itemvalue="Gradle.TestChatService.testSendChatStream" />
+        <item itemvalue="Gradle.TestChatService.testStartServer" />
+        <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
         <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
         <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
       </list>
@@ -429,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632731806630</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632732321552</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1632732321552</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,6 +435,36 @@
             <State />
           </value>
         </entry>
+        <entry key="c8253736-ab11-4149-85ff-093044c187d8">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c8253736-ab11-4149-85ff-093044c187d8" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
