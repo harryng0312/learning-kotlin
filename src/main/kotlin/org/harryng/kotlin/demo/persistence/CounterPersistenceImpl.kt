@@ -27,7 +27,7 @@ open class CounterPersistenceImpl : CounterPersistence {
     protected val cache: Cache get() = cacheManager.getCache("counter")
 
 
-    override val entityManager: EntityManager
+    protected val entityManager: EntityManager
         get() = defaultEntityManager
 
     protected open fun updateCounter(id: String): Long {
@@ -73,7 +73,7 @@ open class CounterPersistenceImpl : CounterPersistence {
     }
 
     override fun doIncrement(id: String, step: Int): Long {
-        var counter: CounterImpl = currentCounter(id)
+        val counter: CounterImpl = currentCounter(id)
         if (counter.value.get() + step >= counter.maxValue) {
 //            counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
             counter.value.set(updateCounter(id))

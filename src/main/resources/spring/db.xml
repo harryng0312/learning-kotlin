@@ -14,7 +14,7 @@
         <property name="password" value="${db.password}"/>
         <property name="initialSize" value="${db.minPoolSize}"/>
         <property name="maxTotal" value="${db.maxPoolSize}"/>
-        <property name="maxOpenPreparedStatements" value="${db.maxPoolSize}"/>
+<!--        <property name="lifo" value="false"/>-->
     </bean>
     <!--    <bean id="dsTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
     <!--        <property name="dataSource" ref="dataSource"/>-->
@@ -22,10 +22,10 @@
     <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg name="dataSource" ref="dataSource"/>
     </bean>
-    <bean id="sqlTransactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+<!--    <bean id="sqlTransactionManager"-->
+<!--          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        <constructor-arg name="dataSource" ref="dataSource"/>-->
+<!--    </bean>-->
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           destroy-method="destroy">

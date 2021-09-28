@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring/aop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/aop.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring/db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/db.xml" afterDir="false" />
@@ -50,6 +53,9 @@
         <option value="spring-beans.schema" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="grpc" />
   </component>
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="master" />
@@ -514,18 +520,6 @@
     <MESSAGE value="- db concurrent is not ok for lock - try to use native sql is ok&#10;- building the gRPC java and kt" />
     <MESSAGE value="- cache&#10;- building the gRPC java and kt" />
     <option name="LAST_COMMIT_MESSAGE" value="- cache&#10;- building the gRPC java and kt" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <condition expression="(counter.value.get() + step &gt;= counter.maxValue)" language="kotlin" />
-          <url>file://$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt</url>
-          <line>76</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/learning_kotlin$TestCounterService_testGetParalleExecutorCounterIncrement.ic" NAME="TestCounterService.testGetParalleExecutorCounterIncrement Coverage Results" MODIFIED="1631992189286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

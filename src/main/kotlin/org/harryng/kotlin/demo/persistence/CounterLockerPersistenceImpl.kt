@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock
 import javax.persistence.EntityManager
 import javax.persistence.LockModeType
 
-open class CounterLockerPersistenceImpl : CounterPersistenceImpl() {
+open class CounterLockerPersistenceImpl : CounterPersistence {
 
     companion object {
         @JvmStatic
@@ -24,11 +24,13 @@ open class CounterLockerPersistenceImpl : CounterPersistenceImpl() {
     @Qualifier("cacheManager")
     private lateinit var cacheManager: CacheManager
 
+    protected val cache: Cache get() = cacheManager.getCache("counter")
+
     @Autowired
     @Qualifier("namedJdbcTemplate")
     private lateinit var namedJdbcTemplate: NamedParameterJdbcTemplate
 
-    override fun updateCounter(id: String): Long {
+    fun updateCounter(id: String): Long {
         val selectSql = "select value_ from counter where id_ = :id for update"
         val updateSql = "update counter set value_ = :value where id_ = :id"
         val selectParams = mutableMapOf<String, Any>("id" to id)
@@ -38,6 +40,20 @@ open class CounterLockerPersistenceImpl : CounterPersistenceImpl() {
         val updateParams = mutableMapOf<String, Any>("id" to id, "value" to newValue)
         namedJdbcTemplate.update(updateSql, updateParams)
         return value
+    }
+
+    override fun doIncrement(id: String, step: Int): Long {
+        val counter: CounterImpl = currentCounter(id)
+        if (counter.value.get() + step >= counter.maxValue) {
+//            counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
+            counter.value.set(updateCounter(id))
+            counter.maxValue = counter.value.get() + CounterPersistence.DEFAULT_CACHE_STEP
+//            counter.value -= step
+            counter.value.getAndAdd(-step.toLong())
+        }
+        counter.value.getAndAdd(step.toLong())
+        cache.put(id, counter)
+        return counter.value.get()
     }
 
     override fun currentCounter(id: String): CounterImpl {
