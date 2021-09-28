@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- building the gRPC java and kt" />
+    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,8 +48,8 @@
       </list>
     </option>
   </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="grpc" />
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -98,7 +101,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../android/sdk_li" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -108,9 +111,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/spring" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="org.harryng.kotlin.demo.rpc.service" />
@@ -123,19 +126,38 @@
       <recent name="org.harryng.kotlin.demo.persistence" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Gradle.TestChatService.testStartServer">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="TestChatService" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestChatService&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="TestChatService.testSendChatStream" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -164,27 +186,6 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestChatService.testStartServer&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestCounterService.testGetNonBlockingCounterIncrement" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestCounterService.testGetNonBlockingCounterIncrement&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -283,19 +284,19 @@
     <list>
       <item itemvalue="Gradle.learning-kotlin [build]" />
       <item itemvalue="Gradle.learning-kotlin [clean]" />
-      <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
       <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
       <item itemvalue="Gradle.TestChatService.testSendChatStream" />
       <item itemvalue="Gradle.TestChatService.testStartServer" />
       <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
+      <item itemvalue="Gradle.TestChatService" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
         <item itemvalue="Gradle.TestChatService.testStartServer" />
         <item itemvalue="Gradle.TestChatService.testSendChatStream" />
+        <item itemvalue="Gradle.TestChatService" />
+        <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
         <item itemvalue="Gradle.TestNonBlocking.testCoroutine" />
-        <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
       </list>
     </recent_temporary>
   </component>
@@ -317,6 +318,8 @@
       <workItem from="1632583931603" duration="14678000" />
       <workItem from="1632711118538" duration="7881000" />
       <workItem from="1632725781963" duration="5804000" />
+      <workItem from="1632734921506" duration="3042000" />
+      <workItem from="1632794378410" duration="1792000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -402,7 +405,42 @@
       <option name="project" value="LOCAL" />
       <updated>1632719017481</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632731806630</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1632731806630</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632732321552</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1632732321552</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632734118371</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1632734118371</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632739139612</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1632739139612</updated>
+    </task>
+    <task id="LOCAL-00017" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632795702098</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1632795702098</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +454,36 @@
             <State />
           </value>
         </entry>
+        <entry key="c8253736-ab11-4149-85ff-093044c187d8">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c8253736-ab11-4149-85ff-093044c187d8" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
@@ -424,7 +492,8 @@
     <MESSAGE value="- Libs beside" />
     <MESSAGE value="- Libs beside, reentrance lock is better than sync" />
     <MESSAGE value="- building the gRPC java and kt" />
-    <option name="LAST_COMMIT_MESSAGE" value="- building the gRPC java and kt" />
+    <MESSAGE value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/learning_kotlin$TestCounterService_testGetParalleExecutorCounterIncrement.ic" NAME="TestCounterService.testGetParalleExecutorCounterIncrement Coverage Results" MODIFIED="1631992189286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

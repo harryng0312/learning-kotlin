@@ -7,7 +7,7 @@
     <bean id="authInterceptor" class="org.harryng.kotlin.demo.rpc.interceptor.AuthInterceptor"/>
 
     <bean id="grpcServer" class="org.harryng.kotlin.demo.rpc.server.GrpcServer"
-          init-method="startServer" destroy-method="block">
+          init-method="startServer" destroy-method="stop">
         <constructor-arg name="port" value="${gprc.server.port}"/>
         <constructor-arg name="services">
             <list>
@@ -19,6 +19,8 @@
                 <ref bean="authInterceptor"/>
             </list>
         </constructor-arg>
+        <constructor-arg name="certChain" value="classpath:ks/ca.pem"/>
+        <constructor-arg name="privateKey" value="classpath:ks/ca.key"/>
     </bean>
 
 </beans>
