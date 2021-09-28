@@ -77,6 +77,9 @@ open class CounterLockerPersistenceImpl : CounterPersistenceImpl() {
         } finally {
             locker.unlock()
         }
+//        synchronized(lock){
+//            rs = doIncrement(id, step)
+//        }
         return rs
     }
 
