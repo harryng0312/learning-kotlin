@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/CounterServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/CounterServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/harryng/kotlin/demo/service/TestCounterService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/UserServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/UserServiceImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,6 +321,7 @@
       <workItem from="1632725781963" duration="5804000" />
       <workItem from="1632734921506" duration="3042000" />
       <workItem from="1632794378410" duration="1792000" />
+      <workItem from="1632814702144" duration="1938000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -502,7 +502,8 @@
     <MESSAGE value="- Libs beside, reentrance lock is better than sync" />
     <MESSAGE value="- building the gRPC java and kt" />
     <MESSAGE value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
-    <option name="LAST_COMMIT_MESSAGE" value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
+    <MESSAGE value="- db concurrent is not ok for lock - try to use native sql is ok&#10;- building the gRPC java and kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- db concurrent is not ok for lock - try to use native sql is ok&#10;- building the gRPC java and kt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
