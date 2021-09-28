@@ -14,16 +14,16 @@
         <property name="password" value="${db.password}"/>
         <property name="initialSize" value="${db.minPoolSize}"/>
         <property name="maxTotal" value="${db.maxPoolSize}"/>
-<!--        <property name="lifo" value="false"/>-->
     </bean>
     <!--    <bean id="dsTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
     <!--        <property name="dataSource" ref="dataSource"/>-->
     <!--    </bean>-->
+
     <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg name="dataSource" ref="dataSource"/>
     </bean>
-<!--    <bean id="sqlTransactionManager"-->
-<!--          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+    <!-- for multi statement type -->
+<!--    <bean id="defaultTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
 <!--        <constructor-arg name="dataSource" ref="dataSource"/>-->
 <!--    </bean>-->
 
@@ -63,7 +63,7 @@
     </bean>
     <bean id="defaultTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
-        <property name="nestedTransactionAllowed" value="false"/>
+        <property name="nestedTransactionAllowed" value="true"/>
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
         </property>

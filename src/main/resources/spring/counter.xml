@@ -15,11 +15,11 @@
         <aop:pointcut id="counterPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterPersistenceImpl)"/>
         <aop:pointcut id="counterLockerPersistenceOperation" expression="within(org.harryng.kotlin.demo.persistence.CounterLockerPersistenceImpl)"/>
 
-        <aop:pointcut id="counterServiceOperation" expression="within(org.harryng.kotlin.demo.service.CounterServiceImpl)"/>
+<!--        <aop:pointcut id="counterServiceOperation" expression="within(org.harryng.kotlin.demo.service.CounterServiceImpl)"/>-->
 
         <aop:advisor pointcut-ref="counterPersistenceOperation" advice-ref="requiredNewTxAdvicePersistence" order="0"/>
-        <aop:advisor pointcut-ref="counterLockerPersistenceOperation" advice-ref="requiredTxAdvicePersistence" order="0"/>
+        <aop:advisor pointcut-ref="counterLockerPersistenceOperation" advice-ref="requiredNewTxAdvicePersistence" order="0"/>
 
-        <aop:advisor pointcut-ref="counterServiceOperation" advice-ref="notSupportTxAdvice" order="0"/>
+<!--        <aop:advisor pointcut-ref="counterServiceOperation" advice-ref="supportTxAdvice" order="0"/>-->
     </aop:config>
 </beans>
