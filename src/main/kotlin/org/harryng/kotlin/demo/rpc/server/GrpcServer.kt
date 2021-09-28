@@ -8,15 +8,15 @@ import java.io.InputStream
 class GrpcServer(
     val port: Int = 50051,
     val services: List<BindableService> = listOf(),
-    val interceptors: List<ServerInterceptor> = listOf()
+    val interceptors: List<ServerInterceptor> = listOf(),
+    var certChain: InputStream? = null,
+    var privateKey: InputStream? = null
 ) {
     companion object {
         private val logger = LoggerFactory.getLogger(GrpcServer::class.java)
     }
 
     private lateinit var server: Server
-    var certChainFile: InputStream? = null
-    var privateKey: InputStream? = null
 
     private fun init() {
 //        val compressorRegistry: CompressorRegistry = CompressorRegistry.newEmptyInstance()
@@ -31,15 +31,17 @@ class GrpcServer(
 //        val serverBuilder = ServerBuilder
 //            .forPort(port)
 //            .compressorRegistry(compressorRegistry)
-        certChainFile = this.javaClass.classLoader.getResourceAsStream("ks/ca.pem")
-        privateKey = this.javaClass.classLoader.getResourceAsStream("ks/ca.key")
-        if (certChainFile != null && privateKey != null) {
+//        certChain = this.javaClass.classLoader.getResourceAsStream("ks/ca.pem")
+//        privateKey = this.javaClass.classLoader.getResourceAsStream("ks/ca.key")
+        if (certChain != null && privateKey != null) {
             serverCredential = TlsServerCredentials.newBuilder()
-                .keyManager(certChainFile, privateKey)
+                .keyManager(certChain, privateKey)
                 .clientAuth(TlsServerCredentials.ClientAuth.OPTIONAL)
                 .build()
+            logger.info("TLS Server credential")
         }else{
             serverCredential = InsecureServerCredentials.create()
+            logger.info("Insecure Server credential")
         }
         val serverBuilder = Grpc.newServerBuilderForPort(port, serverCredential)
             .compressorRegistry(compressorRegistry)

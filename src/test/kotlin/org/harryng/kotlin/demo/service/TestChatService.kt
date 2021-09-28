@@ -2,13 +2,14 @@ package org.harryng.kotlin.demo.service
 
 import com.google.protobuf.ByteString
 import io.grpc.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.harryng.kotlin.demo.SpringUtil
 import org.harryng.kotlin.demo.initApplicationContext
-import org.harryng.kotlin.demo.rpc.service.ChatServiceKtImpl
 import org.harryng.kotlin.demo.rpc.gen.ChatMessage
 import org.harryng.kotlin.demo.rpc.gen.ChatServiceGrpcKt
 import org.harryng.kotlin.demo.rpc.gen.MessageState
@@ -29,7 +30,7 @@ class TestChatService {
 
     @Before
     fun init() {
-        initApplicationContext()
+        initApplicationContext();
     }
 
     @Test
@@ -64,7 +65,8 @@ class TestChatService {
             }
 //        val channel = ManagedChannelBuilder.forAddress("localhost", port).usePlaintext().build()
             val channel = ManagedChannelBuilder.forAddress("localhost", port)
-                .usePlaintext()
+//                .usePlaintext()
+                .useTransportSecurity()
                 .compressorRegistry(CompressorRegistry.getDefaultInstance())
                 .build()
             try {

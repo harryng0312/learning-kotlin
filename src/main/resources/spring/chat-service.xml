@@ -19,6 +19,8 @@
                 <ref bean="authInterceptor"/>
             </list>
         </constructor-arg>
+        <constructor-arg name="certChain" value="classpath:ks/ca.pem"/>
+        <constructor-arg name="privateKey" value="classpath:ks/ca.key"/>
     </bean>
 
 </beans>
