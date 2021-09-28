@@ -30,7 +30,7 @@ open class CounterPersistenceImpl : CounterPersistence {
     override val entityManager: EntityManager
         get() = defaultEntityManager
 
-    protected fun updateCounter(id: String, step: Int): Long {
+    protected open fun updateCounter(id: String): Long {
 //        var value = value + step + CounterPersistence.DEFAULT_CACHE_STEP
         val cb = entityManager.criteriaBuilder
         val selectCri = cb.createQuery(CounterImpl::class.java)
@@ -56,7 +56,9 @@ open class CounterPersistenceImpl : CounterPersistence {
         // check cache
         if (cacheValue == null) {
             // if not exits in cache - select from db
-            counter = entityManager.find(CounterImpl::class.java, id, LockModeType.PESSIMISTIC_WRITE)
+//            counter = entityManager.find(CounterImpl::class.java, id, LockModeType.PESSIMISTIC_WRITE)
+//            counter.maxValue = counter.value.get() + CounterPersistence.DEFAULT_CACHE_STEP
+            counter = CounterImpl(id, AtomicLong(updateCounter(id)))
             // if not exits in db - create into db and cache
             if (counter == null) {
                 counter = insert(id)
@@ -74,7 +76,7 @@ open class CounterPersistenceImpl : CounterPersistence {
         var counter: CounterImpl = currentCounter(id)
         if (counter.value.get() + step >= counter.maxValue) {
 //            counter.maxValue = counter.value + step + CounterPersistence.DEFAULT_CACHE_STEP
-            counter.value.set(updateCounter(id, step))
+            counter.value.set(updateCounter(id))
             counter.maxValue = counter.value.get() + CounterPersistence.DEFAULT_CACHE_STEP
 //            counter.value -= step
             counter.value.getAndAdd(-step.toLong())

@@ -49,25 +49,12 @@ class TestCounterService {
         logger.info("Result: ${atomRs.get()}")
     }
 
-//    suspend fun getNextVal(loop: Int, atomRs: AtomicLong, counterService: CounterService):Long {
-//        var lastRs = 0L
-//        for (i in 0 until loop step 1) {
-////                val nextVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
-//            val nextVal = UserImpl::class.qualifiedName?.let { counterService.increment(it) }
-//            if (nextVal != null) {
-//                atomRs.addAndGet(1)
-//                lastRs = nextVal
-//            }
-//        }
-//        return lastRs
-//    }
-
     @Test
     fun testGetNonBlockingCounterIncrement() {
         logger.info("=====")
         // 200 (20 * 10 in 2.761s)
         val noOfWorker = 10
-        val loop = 20
+        val loop = 2
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Get currval:${currVal}")
@@ -88,7 +75,7 @@ class TestCounterService {
             val lsTask = mutableListOf<Deferred<Long>>()
             logger.info("Main Thread: ${Thread.currentThread().name}:${Thread.currentThread().hashCode()}")
             for (i in 0 until noOfWorker step 1) {
-                val task = async (Dispatchers.Default) {
+                val task = async(Dispatchers.Default) {
                     logger.info(
                         "Thread[${i}]: ${Thread.currentThread().name}:${
                             Thread.currentThread().hashCode()
@@ -121,8 +108,8 @@ class TestCounterService {
         // 200_000 * 4 in 9.666s
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 10
-        val loop = 20
+        val noOfWorker = 1
+        val loop = 40
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Get currval:${currVal}")
