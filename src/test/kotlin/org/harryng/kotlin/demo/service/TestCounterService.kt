@@ -108,8 +108,8 @@ class TestCounterService {
         // 200_000 * 4 in 9.666s
         // 2_000_000 in 17.312s
         // 20_000_000 in 120.016s
-        val noOfWorker = 500
-        val loop = 40
+        val noOfWorker = 400
+        val loop = 50
         val counterService = SpringUtil.applicationContext.getBean("counterService") as CounterService
         var currVal = UserImpl::class.qualifiedName?.let { counterService.currentValue(it) }
         logger.info("Get currval:${currVal}")
