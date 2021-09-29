@@ -1,7 +1,6 @@
-package org.harryng.kotlin.demo.persistence
+package org.harryng.kotlin.demo.kernel
 
 import org.harryng.kotlin.demo.entity.CounterImpl
-import javax.persistence.EntityManager
 import kotlin.jvm.Throws
 
 interface CounterPersistence {

@@ -1,4 +1,4 @@
-package org.harryng.kotlin.demo.persistence
+package org.harryng.kotlin.demo.kernel
 
 import org.harryng.kotlin.demo.entity.CounterImpl
 import org.springframework.beans.factory.annotation.Autowired
@@ -8,8 +8,6 @@ import org.springframework.cache.CacheManager
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import java.util.concurrent.atomic.AtomicLong
 import java.util.concurrent.locks.ReentrantLock
-import javax.persistence.EntityManager
-import javax.persistence.LockModeType
 
 open class CounterLockerPersistenceImpl : CounterPersistence {
 

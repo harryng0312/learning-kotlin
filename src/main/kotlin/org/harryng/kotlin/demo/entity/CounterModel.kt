@@ -1,6 +1,6 @@
 package org.harryng.kotlin.demo.entity
 
-import org.harryng.kotlin.demo.persistence.CounterPersistence
+import org.harryng.kotlin.demo.kernel.CounterPersistence
 import java.util.concurrent.atomic.AtomicLong
 
 open class CounterModel(

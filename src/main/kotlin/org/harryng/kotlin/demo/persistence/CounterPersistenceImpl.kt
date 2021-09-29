@@ -1,6 +1,7 @@
 package org.harryng.kotlin.demo.persistence
 
 import org.harryng.kotlin.demo.entity.CounterImpl
+import org.harryng.kotlin.demo.kernel.CounterPersistence
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.cache.Cache

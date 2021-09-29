@@ -1,7 +1,7 @@
 package org.harryng.kotlin.demo.service
 
 import org.harryng.kotlin.demo.entity.CounterImpl
-import org.harryng.kotlin.demo.persistence.CounterPersistence
+import org.harryng.kotlin.demo.kernel.CounterPersistence
 import kotlin.jvm.Throws
 
 interface CounterService{

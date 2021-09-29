@@ -1,7 +1,7 @@
 package org.harryng.kotlin.demo.service
 
 import org.harryng.kotlin.demo.entity.CounterImpl
-import org.harryng.kotlin.demo.persistence.CounterPersistence
+import org.harryng.kotlin.demo.kernel.CounterPersistence
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import kotlin.jvm.Throws
