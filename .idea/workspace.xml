@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/CounterModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/entity/CounterModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/kernel/CounterLocker.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/kernel/Sync.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterLockerPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/kernel/CounterLockerPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/kernel/CounterPersistence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/persistence/CounterPersistenceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/CounterService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/CounterService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/CounterServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/service/CounterServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/counter.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/TestMain.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/TestMain2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/RunGrpcServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +60,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="grpc" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

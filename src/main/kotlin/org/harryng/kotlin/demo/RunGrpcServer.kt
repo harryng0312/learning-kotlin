@@ -1,11 +1,12 @@
 package org.harryng.kotlin.demo
 
-import kotlinx.coroutines.*
+import org.harryng.kotlin.demo.rpc.server.GrpcServer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.context.ApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext
-import kotlin.coroutines.CoroutineContext
+
+val logger: Logger = LoggerFactory.getLogger("main")
 
 class SpringUtil {
     companion object {
@@ -17,11 +18,16 @@ class SpringUtil {
 }
 
 fun initApplicationContext() {
+
 }
 
-val logger: Logger = LoggerFactory.getLogger("main")
-
+fun runServer(){
+    val grpcServer = SpringUtil.applicationContext.getBean(GrpcServer::class.java)
+    grpcServer.start()
+    grpcServer.block()
+}
 
 fun main(args: Array<String>) {
-
+    initApplicationContext()
+    runServer()
 }

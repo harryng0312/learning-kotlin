@@ -18,7 +18,7 @@ class GrpcServer(
 
     private lateinit var server: Server
 
-    private fun init() {
+    fun init() {
 //        val compressorRegistry: CompressorRegistry = CompressorRegistry.newEmptyInstance()
 //        compressorRegistry.register(Codec.Gzip())
 //        compressorRegistry.register(Codec.Identity.NONE)
@@ -55,8 +55,7 @@ class GrpcServer(
         server = serverBuilder.build()
     }
 
-    fun startServer() {
-        init()
+    fun start() {
         server.start()
         logger.info("Server is started!")
         Runtime.getRuntime().addShutdownHook(Thread {
