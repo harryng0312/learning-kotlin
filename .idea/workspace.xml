@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/TestMain.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/TestMain2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/RunGrpcServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/harryng/kotlin/demo/rpc/server/GrpcServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/chat-service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ks/cmd.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,13 +131,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
