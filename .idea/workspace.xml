@@ -4,8 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ks/cmd.txt" beforeDir="false" />
+    <list default="true" id="b6842fd1-d2e5-4215-a09c-fd5fc34351f7" name="Changes" comment="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/learning-kotlin.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/orm/common-orm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/orm/counter-orm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/orm/user-orm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/log4j.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring-conf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring/aop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring/cache.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring/common.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring/counter.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring/db.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/spring/user.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,16 +121,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../android/sdk_li" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/db" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/db" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/spring" />
@@ -130,16 +149,14 @@
       <recent name="org.harryng.kotlin.demo.persistence" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Gradle.TestUserService.testUpdateUser">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,48 +167,6 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestChatService&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestChatService.testSendChatStream" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestChatService.testSendChatStream&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestChatService.testStartServer" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestChatService.testStartServer&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -249,6 +224,48 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="TestUserService.testAddUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestUserService.testAddUser&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUserService.testUpdateUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;org.harryng.kotlin.demo.service.TestUserService.testUpdateUser&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="learning-kotlin [build]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -290,19 +307,19 @@
     <list>
       <item itemvalue="Gradle.learning-kotlin [build]" />
       <item itemvalue="Gradle.learning-kotlin [clean]" />
-      <item itemvalue="Gradle.TestChatService.testSendChatStream" />
-      <item itemvalue="Gradle.TestChatService.testStartServer" />
       <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
       <item itemvalue="Gradle.TestChatService" />
       <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
+      <item itemvalue="Gradle.TestUserService.testAddUser" />
+      <item itemvalue="Gradle.TestUserService.testUpdateUser" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestUserService.testUpdateUser" />
+        <item itemvalue="Gradle.TestUserService.testAddUser" />
         <item itemvalue="Gradle.TestCounterService.testGetParalleExecutorCounterIncrement" />
         <item itemvalue="Gradle.TestCounterService.testGetNonBlockingCounterIncrement" />
         <item itemvalue="Gradle.TestChatService" />
-        <item itemvalue="Gradle.TestChatService.testStartServer" />
-        <item itemvalue="Gradle.TestChatService.testSendChatStream" />
       </list>
     </recent_temporary>
   </component>
@@ -328,6 +345,10 @@
       <workItem from="1632794378410" duration="1792000" />
       <workItem from="1632814702144" duration="2914000" />
       <workItem from="1632882175679" duration="998000" />
+      <workItem from="1632908885538" duration="39000" />
+      <workItem from="1632908927868" duration="10000" />
+      <workItem from="1633746778668" duration="347000" />
+      <workItem from="1637570472265" duration="1146000" />
     </task>
     <task id="LOCAL-00001" summary="- Libs beside">
       <created>1632214740173</created>
@@ -490,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632823909769</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt">
+      <created>1632900633769</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1632900633769</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,10 +570,10 @@
     <MESSAGE value="- Libs beside" />
     <MESSAGE value="- Libs beside, reentrance lock is better than sync" />
     <MESSAGE value="- building the gRPC java and kt" />
-    <MESSAGE value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
     <MESSAGE value="- db concurrent is not ok for lock - try to use native sql is ok&#10;- building the gRPC java and kt" />
     <MESSAGE value="- cache&#10;- building the gRPC java and kt" />
-    <option name="LAST_COMMIT_MESSAGE" value="- cache&#10;- building the gRPC java and kt" />
+    <MESSAGE value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- db concurrent is not ok for lock - try to use native sql&#10;- building the gRPC java and kt" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/learning_kotlin$TestCounterService_testGetParalleExecutorCounterIncrement.ic" NAME="TestCounterService.testGetParalleExecutorCounterIncrement Coverage Results" MODIFIED="1631992189286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
