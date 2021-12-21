@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-export GRPC_JAVA_GEN=/Volumes/working/tools/protobuf/protoc-gen-grpc-java-1.41.0-osx-x86_64.exe
+export GRPC_JAVA_GEN=/Volumes/working/tools/protobuf/protoc-gen-grpc-java
 export GRPC_KT_GEN=/Volumes/working/tools/protobuf/protoc-gen-grpc-kotlin.sh
 export JAVA_OUTPUT_FILE=./src/main/java
 export KT_OUTPUT_FILE=./src/main/kotlin
